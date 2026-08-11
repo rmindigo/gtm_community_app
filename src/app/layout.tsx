@@ -13,9 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The GTM Table | Private Enterprise GTM Rooms",
+  metadataBase: new URL("https://gtmers.co"),
+  title: "The GTM Table | Enterprise GTM dinners",
   description:
-    "Private conversations for founders and operators building real enterprise GTM. Bay Area-first rooms for practical B2B sales playbooks.",
+    "A dinner in the Bay Area. Founders bring the deal. Operators bring the play. Straight talk on enterprise GTM.",
 };
 
 export default function RootLayout({
