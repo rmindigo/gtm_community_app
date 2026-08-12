@@ -1,45 +1,72 @@
 import Link from "next/link";
+import Footer from "./Footer";
+import PixelLogo from "./PixelLogo";
+import { ACCENTS, type AccentName } from "@/lib/theme";
 
 type PathLayoutProps = {
-  eyebrow: string;
   title: string;
   intro: string;
   points: string[];
+  // Player badge above the headline, e.g. "P1 — FOR FOUNDERS".
+  badge: string;
+  accent: AccentName;
   children: React.ReactNode;
 };
 
-export default function PathLayout({ eyebrow, title, intro, points, children }: PathLayoutProps) {
-  return (
-    <main className="min-h-screen overflow-hidden bg-[#f5f2ea] text-stone-800">
-      <div className="pointer-events-none fixed inset-0 -z-0 bg-[radial-gradient(circle_at_18%_8%,rgba(214,177,95,0.16),transparent_32%),radial-gradient(circle_at_85%_4%,rgba(190,160,100,0.12),transparent_34%),linear-gradient(145deg,#f8f5ee_0%,#f3eee3_50%,#efe7d7_100%)]" />
+export default function PathLayout({
+  title,
+  intro,
+  points,
+  badge,
+  accent,
+  children,
+}: PathLayoutProps) {
+  const color = ACCENTS[accent];
 
-      <header className="relative z-10 mx-auto flex max-w-3xl items-center justify-between px-5 py-5 sm:px-8">
-        <Link href="/" className="text-sm font-semibold uppercase tracking-[0.32em] text-stone-900">
-          The GTM Table
+  return (
+    <div style={{ "--accent": color } as React.CSSProperties}>
+      <header className="mx-auto flex max-w-[820px] items-center justify-between gap-4 px-6 py-[22px]">
+        <Link href="/" className="flex items-center gap-[14px] text-white hover:text-gold">
+          <PixelLogo />
+          <span className="font-pixel text-xs tracking-[2px]">THE GTM TABLE</span>
         </Link>
-        <Link href="/" className="text-sm text-stone-500 transition hover:text-stone-900">
+        <Link href="/" className="text-base">
           ← Back
         </Link>
       </header>
 
-      <section className="relative z-10 mx-auto max-w-3xl px-5 py-14 sm:px-8 sm:py-20">
-        <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#8a6a1f]">{eyebrow}</p>
-        <h1 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-[-0.055em] text-stone-900 sm:text-5xl lg:text-6xl">
-          {title}
-        </h1>
-        <p className="mt-6 text-lg leading-8 text-stone-600 sm:text-xl sm:leading-9">{intro}</p>
+      <main className="mx-auto max-w-[820px] px-6 pb-20 pt-9">
+        <div
+          className="inline-block border-[3px] border-black px-3 py-2 font-pixel text-[10px] tracking-[2px] text-void shadow-[4px_4px_0_#000]"
+          style={{ background: color }}
+        >
+          {badge}
+        </div>
 
-        <ul className="mt-9 space-y-4 text-stone-700">
+        <h1 className="mt-[26px] font-pixel text-[clamp(20px,3.4vw,32px)] leading-[1.6] text-white [text-shadow:4px_4px_0_#2b2b5e]">
+          {title}
+          <span
+            data-blink
+            className="ml-2 inline-block h-[1em] w-[0.5em] align-[-0.15em]"
+            style={{ background: color, animation: "blink 1s steps(1) infinite" }}
+          />
+        </h1>
+
+        <p className="mt-[22px] max-w-[58ch] text-lg leading-[1.5] text-body">{intro}</p>
+
+        <div className="mt-6 grid gap-[10px] text-base leading-[1.4] text-body">
           {points.map((point) => (
-            <li key={point} className="flex gap-3 leading-7">
-              <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#c69a3a]" />
-              <span>{point}</span>
-            </li>
+            <div key={point} className="flex gap-[10px]">
+              <span style={{ color }}>▶</span>
+              {point}
+            </div>
           ))}
-        </ul>
+        </div>
 
         <div className="mt-10">{children}</div>
-      </section>
-    </main>
+      </main>
+
+      <Footer prefix="/" width="max-w-[820px]" tagline="The GTM Table. Bay Area." />
+    </div>
   );
 }

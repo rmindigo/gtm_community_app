@@ -1,3 +1,7 @@
+import Footer from "./_components/Footer";
+import PixelLogo from "./_components/PixelLogo";
+import PixelStar from "./_components/PixelStar";
+
 const ctaLinks = {
   founder: "/founder",
   operator: "/operator",
@@ -5,51 +9,74 @@ const ctaLinks = {
   updates: "/updates",
 };
 
-const paths = [
+// Placeholders — edit these two when the first table is set.
+const firstTable = {
+  month: "MARCH",
+  seats: 12,
+};
+
+// The people running the room. Leave `bio` empty and the card renders without
+// a paragraph — no placeholder copy goes live by accident.
+const hosts = [
   {
-    label: "I’m a founder",
+    name: "Ryan Mindigo",
+    initials: "RM",
+    linkedin: "https://www.linkedin.com/in/rmindigo/",
+    accent: "#ffd23f",
+    bio: "Ryan has spent 16 years in enterprise GTM, most recently on the founding team at Brief and before that at BrowserStack, where he scaled the West Coast enterprise team from one AE to ten and landed Google, Wells Fargo, Oracle, and HSBC. A 2x founder and early Yammer alum, he puts founders across the table from operators who have run the play.",
+  },
+  {
+    name: "Danny Varty",
+    initials: "DV",
+    linkedin: "https://www.linkedin.com/in/danny-varty-9a9aa115/",
+    accent: "#52d8ff",
+    bio: "Danny has spent 15 years selling into the enterprise, most recently as founding sales leader at Ragie and before that at Iterable, Meta, and Microsoft, where he carried the $80M Office 365 number across the West Coast. He has opened the first enterprise accounts at startups and closed the largest ones at scale.",
+  },
+];
+
+const players = [
+  {
+    tag: "P1 · FOUNDER →",
     href: ctaLinks.founder,
     note: "Sit with operators who have closed the deal you are working.",
-    primary: true,
+    accent: "#ffd23f",
+    solid: true,
   },
   {
-    label: "I’m a GTM operator",
+    tag: "P2 · GTM OPERATOR →",
     href: ctaLinks.operator,
     note: "Trade notes with people who have carried the number. Meet founders worth the time.",
+    accent: "#52d8ff",
   },
   {
-    label: "I’m interested in sponsoring",
+    tag: "P3 · SPONSOR →",
     href: ctaLinks.sponsor,
     note: "Cover the table. The dinners, the golf, the rooms.",
+    accent: "#ff5db1",
   },
   {
-    label: "Keep me posted",
+    tag: "SPECTATE · KEEP ME POSTED →",
     href: ctaLinks.updates,
     note: "Hear when the next Bay Area table opens.",
+    accent: "#46f797",
   },
 ];
 
 const roomStandards = [
-  ["Founders pay to sit", "They bring the deal on the table. The stalled pipe, the first enterprise logo, the price nobody will sign."],
-  ["Operators bring the plays", "They have sold into the account, expanded it, lost it, and won the next one. They say what worked."],
-  ["Sponsors cover the room", "They pay for the dinner and the golf. They do not pitch across the table."],
-];
-
-const audiences = [
   {
-    title: "Founders",
-    tag: "Paying customer",
-    body: "Founders selling into the enterprise. They come with the pipeline, the price, the buyer they cannot reach, the hire they have not made.",
+    label: "FOUNDERS RESERVE THE SEAT",
+    body: "They bring the deal to the table. The stalled pipe, the first enterprise logo, the price nobody will sign.",
+    accent: "text-gold",
   },
   {
-    title: "GTM operators",
-    tag: "Expert network",
-    body: "AEs, CROs, RevOps, partnerships, success, marketing, and sales engineers. They carried the number and know how the deal was won.",
+    label: "OPERATORS BRING THE PLAYS",
+    body: "They have sold into the account, expanded it, lost it, and won the next one. They say what worked.",
+    accent: "text-cyan",
   },
   {
-    title: "Sponsors",
-    tag: "Funding partner",
-    body: "Companies that want time with founders and operators. They pay for the room and stay off the sales floor.",
+    label: "SPONSORS COVER THE ROOM",
+    body: "They take care of the dinner and the golf. They do not pitch across the table.",
+    accent: "text-magenta",
   },
 ];
 
@@ -57,18 +84,22 @@ const steps = [
   {
     title: "Build the table",
     body: "Each table holds a few founders, a few operators, and one enterprise problem to work.",
+    chip: "#ffd23f",
   },
   {
     title: "Set the question",
     body: "The question is narrow. Open the first enterprise account. Fix the stalled pipe. Hire the first VP of Sales. Run the partner motion.",
+    chip: "#52d8ff",
   },
   {
     title: "Trade the plays",
     body: "Operators say what worked in the field. Founders bring the mess behind the deal.",
+    chip: "#46f797",
   },
   {
     title: "Keep it light",
     body: "No portal. No feed. A follow-up, an introduction, and the next table when it earns the time.",
+    chip: "#ff5db1",
   },
 ];
 
@@ -88,18 +119,22 @@ const eventFormats = [
   {
     title: "Founder advisory dinners",
     body: "A few founders. A few operators. One deal to work. Dinner on the table.",
+    accent: "text-gold",
   },
   {
     title: "Operator salons",
     body: "Field leaders trade notes on how the enterprise buys now.",
+    accent: "text-cyan",
   },
   {
     title: "Golf outings",
     body: "Eighteen holes. Room to talk between shots.",
+    accent: "text-green",
   },
   {
     title: "Sponsor-hosted tables",
-    body: "A room a sponsor pays for. They host. They do not pitch.",
+    body: "A room a sponsor covers. They host. They do not pitch.",
+    accent: "text-magenta",
   },
 ];
 
@@ -110,273 +145,349 @@ const sponsorValue = [
   "Time to earn the trust of the people who sign",
 ];
 
-function SectionHeader({ eyebrow, title, body }: { eyebrow: string; title: string; body?: string }) {
+function Eyebrow({ children, className = "text-gold" }: { children: React.ReactNode; className?: string }) {
+  return <div className={`font-pixel text-[10px] tracking-[2px] ${className}`}>{children}</div>;
+}
+
+function Cursor({ color }: { color: string }) {
   return (
-    <div className="max-w-3xl">
-      <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#8a6a1f]">{eyebrow}</p>
-      <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-stone-900 sm:text-4xl lg:text-5xl">
-        {title}
-      </h2>
-      {body ? <p className="mt-5 text-base leading-8 text-stone-600 sm:text-lg">{body}</p> : null}
+    <span
+      data-blink
+      className="ml-2 inline-block h-[1em] w-[0.5em] align-[-0.15em]"
+      style={{ background: color, animation: "blink 1s steps(1) infinite" }}
+    />
+  );
+}
+
+function Bullet({ children, color }: { children: React.ReactNode; color: string }) {
+  return (
+    <div className="flex gap-[10px]">
+      <span style={{ color }}>▶</span>
+      {children}
     </div>
   );
 }
 
-function CTAButton({ href, children, variant = "primary" }: { href: string; children: React.ReactNode; variant?: "primary" | "secondary" }) {
-  const classes =
-    variant === "primary"
-      ? "border border-[#d6b15f] bg-[#e7c778] text-[#2a2109] shadow-[0_14px_44px_rgba(214,177,95,0.28)] hover:bg-[#eed08a]"
-      : "border border-stone-900/15 bg-white text-stone-900 shadow-sm hover:border-[#d6b15f]/70 hover:bg-stone-50";
-
+function ArcadeButton({
+  href,
+  children,
+  color,
+  solid = false,
+}: {
+  href: string;
+  children: React.ReactNode;
+  color: string;
+  solid?: boolean;
+}) {
   return (
     <a
       href={href}
-      className={`inline-flex min-h-12 w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition sm:w-auto ${classes}`}
+      className="press inline-block border-[3px] px-[18px] py-[14px] font-pixel text-[10px] shadow-[5px_5px_0_#000] hover:shadow-[2px_2px_0_#000]"
+      style={
+        solid
+          ? { background: color, color: "#0a0a14", borderColor: "#000" }
+          : { background: "#13132b", color, borderColor: color }
+      }
     >
       {children}
     </a>
   );
 }
 
-function BulletList({ items }: { items: string[] }) {
-  return (
-    <ul className="mt-6 space-y-4 text-stone-600">
-      {items.map((item) => (
-        <li key={item} className="flex gap-3 leading-7">
-          <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#c69a3a]" />
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#f5f2ea] text-stone-800">
-      <div className="pointer-events-none fixed inset-0 -z-0 bg-[radial-gradient(circle_at_18%_8%,rgba(214,177,95,0.16),transparent_32%),radial-gradient(circle_at_85%_4%,rgba(190,160,100,0.12),transparent_34%),linear-gradient(145deg,#f8f5ee_0%,#f3eee3_50%,#efe7d7_100%)]" />
-
-      <header className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
-        <a href="#top" className="text-sm font-semibold uppercase tracking-[0.32em] text-stone-900">
-          The GTM Table
-        </a>
-        <nav className="hidden items-center gap-7 text-sm text-stone-500 md:flex">
-          <a className="transition hover:text-stone-900" href="#model">
-            Model
-          </a>
-          <a className="transition hover:text-stone-900" href="#formats">
-            Formats
-          </a>
-          <a className="transition hover:text-stone-900" href="#sponsors">
-            Sponsors
-          </a>
-          <a className="transition hover:text-stone-900" href="#about">
-            Ryan
-          </a>
+    <div>
+      <header className="mx-auto flex max-w-[1140px] flex-wrap items-center justify-between gap-4 px-6 py-[22px]">
+        <div className="flex items-center gap-[14px]">
+          <PixelLogo />
+          <div className="font-pixel text-xs tracking-[2px] text-white">THE GTM TABLE</div>
+        </div>
+        <nav className="flex flex-wrap gap-[22px] text-base">
+          <a href="#how">How it works</a>
+          <a href="#formats">Formats</a>
+          <a href="#sponsors">Sponsors</a>
+          <a href="#hosts">Hosts</a>
         </nav>
       </header>
 
-      <section id="top" className="relative z-10 mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-10 lg:pb-28">
+      <section className="mx-auto grid max-w-[1140px] grid-cols-[repeat(auto-fit,minmax(320px,1fr))] items-start gap-10 px-6 pb-16 pt-10">
         <div>
-          <div className="inline-flex flex-wrap items-center gap-2 rounded-xl border border-[#d6b15f]/40 bg-[#d6b15f]/12 px-3 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#8a6a1f] sm:px-4">
-            <span>Bay Area first</span>
-            <span className="h-1 w-1 rounded-full bg-[#c69a3a]" />
-            <span>Enterprise GTM</span>
+          <div className="inline-block border-[3px] border-black bg-green px-3 py-2 font-pixel text-[10px] tracking-[2px] text-void shadow-[4px_4px_0_#000]">
+            BAY AREA FIRST — ENTERPRISE GTM
           </div>
-          <h1 className="mt-7 max-w-5xl text-5xl font-semibold leading-[0.94] tracking-[-0.065em] text-stone-900 sm:text-6xl lg:text-7xl xl:text-8xl">
+
+          <h1 className="mt-7 font-pixel text-[clamp(22px,3.4vw,40px)] leading-[1.5] text-white [text-shadow:4px_4px_0_#2b2b5e]">
             Founders and operators. One table. Straight talk on enterprise deals.
+            <Cursor color="#ffd23f" />
           </h1>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-stone-600 sm:text-xl sm:leading-9">
+
+          <p className="mt-6 max-w-[56ch] text-lg leading-[1.5] text-body">
             The GTM Table is a dinner. Restaurants around San Francisco and the Bay Area. Founders bring the deal they are trying to close. Operators bring the plays that closed theirs. Nobody performs. Everybody talks.
           </p>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-stone-500">
-            Founders pay to sit down. Sponsors cover the table. Operators come to talk. The room stays small. The talk stays honest.
+          <p className="mt-[14px] max-w-[56ch] text-base leading-[1.5] text-muted">
+            Founders reserve their seat. Sponsors cover the table. Operators come to talk. The room stays small. The talk stays honest.
           </p>
 
-          <div className="mt-9 grid gap-3 sm:grid-cols-2">
-            {paths.map((path) => (
+          <div className="mb-[14px] mt-[34px] flex items-center gap-2 font-pixel text-[10px] tracking-[1px] text-gold">
+            <PixelStar /> SELECT YOUR PLAYER <PixelStar />
+          </div>
+
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-[14px]">
+            {players.map((player) => (
               <a
-                key={path.label}
-                href={path.href}
-                className={`group rounded-2xl border p-4 transition ${
-                  path.primary
-                    ? "border-[#d6b15f] bg-[#e7c778] text-[#2a2109] shadow-[0_16px_50px_rgba(214,177,95,0.26)] hover:bg-[#eed08a]"
-                    : "border-stone-900/12 bg-white text-stone-900 shadow-sm hover:border-[#d6b15f]/60 hover:bg-stone-50"
-                }`}
+                key={player.tag}
+                href={player.href}
+                className="press block border-[3px] p-4 shadow-[5px_5px_0_#000] hover:shadow-[2px_2px_0_#000]"
+                style={
+                  player.solid
+                    ? { background: player.accent, borderColor: "#000", color: "#0a0a14" }
+                    : { background: "#13132b", borderColor: "#34346a", color: "#e8e8f0" }
+                }
               >
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-base font-semibold">{path.label}</span>
-                  <span className="transition group-hover:translate-x-1">→</span>
+                <div
+                  className="font-pixel text-[10px]"
+                  style={{ color: player.solid ? "#0a0a14" : player.accent }}
+                >
+                  {player.tag}
                 </div>
-                <p className={`mt-2 text-sm leading-6 ${path.primary ? "text-[#4a3c17]" : "text-stone-500"}`}>{path.note}</p>
+                <div
+                  className="mt-2 text-[15px] leading-[1.3]"
+                  style={{ color: player.solid ? "#0a0a14" : "#d8d8ec" }}
+                >
+                  {player.note}
+                </div>
               </a>
             ))}
           </div>
-          <p className="mt-4 text-sm text-stone-400">CTA links are placeholders until final beehiiv URLs are provided.</p>
+
+          <div className="mt-[26px] font-pixel text-[10px] leading-[1.8] tracking-[1px] text-green">
+            NEXT LEVEL: {firstTable.month} · SAN FRANCISCO · {firstTable.seats} SEATS
+          </div>
         </div>
 
-        <aside className="relative rounded-[2rem] border border-stone-900/10 bg-white p-6 shadow-xl shadow-stone-900/5 sm:p-8">
-          <div className="border-b border-stone-900/10 pb-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#8a6a1f]">Room model</p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-stone-900">Who pays. Who talks. Who hosts.</h2>
-          </div>
-          <div className="mt-6 space-y-4">
-            {roomStandards.map(([title, body]) => (
-              <div key={title} className="rounded-2xl border border-stone-900/8 bg-stone-50 p-5">
-                <h3 className="text-lg font-semibold text-stone-900">{title}</h3>
-                <p className="mt-2 leading-7 text-stone-600">{body}</p>
+        <aside className="border-[3px] border-edge bg-panel p-[26px] shadow-[8px_8px_0_#000]">
+          <Eyebrow className="text-cyan">ROOM MODEL</Eyebrow>
+          <h2 className="mb-5 mt-[14px] font-pixel text-[14px] leading-[1.7] text-white">
+            Who sits. Who talks. Who hosts.
+          </h2>
+          <div className="grid gap-[14px]">
+            {roomStandards.map((item) => (
+              <div key={item.label} className="border-[3px] border-edge-dim bg-band p-4">
+                <div className={`font-pixel text-[10px] leading-[1.7] ${item.accent}`}>{item.label}</div>
+                <p className="mt-2 text-base leading-[1.4] text-body">{item.body}</p>
               </div>
             ))}
           </div>
         </aside>
       </section>
 
-      <section id="model" className="relative z-10 border-y border-stone-900/10 bg-stone-900/[0.02] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeader
-            eyebrow="The model"
-            title="Founders pay. Operators talk. Sponsors cover the table."
-            body="The money is simple. Founders pay to sit down. Sponsors cover the room. Operators come for the people at the table."
-          />
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {audiences.map((item) => (
-              <article key={item.title} className="rounded-[1.75rem] border border-stone-900/10 bg-white p-6 shadow-sm">
-                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-[#8a6a1f]">{item.tag}</p>
-                <h3 className="mt-4 text-2xl font-semibold tracking-[-0.035em] text-stone-900">{item.title}</h3>
-                <p className="mt-4 leading-7 text-stone-600">{item.body}</p>
-              </article>
-            ))}
-          </div>
+      <section
+        id="how"
+        className="mx-auto grid max-w-[1140px] grid-cols-[repeat(auto-fit,minmax(320px,1fr))] items-start gap-11 border-t-[3px] border-edge-dim px-6 py-[72px]"
+      >
+        <div>
+          <Eyebrow className="text-green">HOW IT WORKS — QUEST LOG</Eyebrow>
+          <h2 className="mb-3 mt-[18px] font-pixel text-[clamp(16px,2.2vw,24px)] leading-[1.7] text-white">
+            One room. One problem. The people who have solved it.
+          </h2>
+          <p className="text-[17px] text-muted">One page and four doors. Pick yours. The room comes after.</p>
         </div>
-      </section>
-
-      <section className="relative z-10 mx-auto grid max-w-7xl gap-10 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
-        <SectionHeader
-          eyebrow="How it works"
-          title="One room. One problem. The people who have solved it."
-          body="One page and four doors. Pick yours. The room comes after."
-        />
-        <div className="space-y-4">
+        <div className="grid gap-4">
           {steps.map((step, index) => (
-            <div key={step.title} className="grid gap-4 rounded-[1.5rem] border border-stone-900/10 bg-white p-5 shadow-sm sm:grid-cols-[3.25rem_1fr] sm:p-6">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[#d6b15f]/40 bg-[#d6b15f]/15 font-mono text-sm font-semibold text-[#8a6a1f]">
-                0{index + 1}
-              </span>
+            <div
+              key={step.title}
+              className="flex gap-[18px] border-[3px] border-edge bg-panel p-5 shadow-[6px_6px_0_#000]"
+            >
+              <div
+                className="flex h-[38px] w-[38px] flex-none items-center justify-center border-[3px] border-black font-pixel text-xs text-void"
+                style={{ background: step.chip }}
+              >
+                {index + 1}
+              </div>
               <div>
-                <h3 className="text-xl font-semibold tracking-[-0.03em] text-stone-900">{step.title}</h3>
-                <p className="mt-2 leading-7 text-stone-600">{step.body}</p>
+                <div className="font-pixel text-[11px] leading-[1.6] text-white">{step.title}</div>
+                <p className="mt-[6px] text-base leading-[1.4] text-body">{step.body}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto grid max-w-7xl gap-5 px-5 pb-20 sm:px-8 sm:pb-24 lg:grid-cols-2 lg:px-10">
-        <article className="rounded-[2rem] border border-stone-900/10 bg-white p-6 shadow-sm sm:p-8">
-          <SectionHeader
-            eyebrow="For founders"
-            title="Get the operator’s read before the mistake compounds."
-            body="Founders come for operators who know the difference between a good story and a deal that closes."
-          />
-          <BulletList items={founderReasons} />
-          <div className="mt-8">
-            <CTAButton href={ctaLinks.founder}>I’m a founder</CTAButton>
+      <section className="mx-auto grid max-w-[1140px] grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6 px-6 pb-[72px]">
+        <div className="border-[3px] border-gold bg-panel p-[30px] shadow-[8px_8px_0_#000]">
+          <Eyebrow>P1 — FOR FOUNDERS</Eyebrow>
+          <h2 className="mb-3 mt-4 font-pixel text-[clamp(14px,1.8vw,19px)] leading-[1.7] text-white">
+            Get the operator&apos;s read before the mistake compounds.
+          </h2>
+          <p className="mb-4 text-[17px] leading-[1.45] text-body">
+            Founders come for operators who know the difference between a good story and a deal that closes.
+          </p>
+          <div className="mb-6 grid gap-[10px] text-base leading-[1.4] text-body">
+            {founderReasons.map((reason) => (
+              <Bullet key={reason} color="#ffd23f">
+                {reason}
+              </Bullet>
+            ))}
           </div>
-        </article>
-        <article className="rounded-[2rem] border border-stone-900/10 bg-white p-6 shadow-sm sm:p-8">
-          <SectionHeader
-            eyebrow="For GTM operators"
-            title="The room runs on operators."
-            body="Operators come for the peers, the dinners, the golf, and founders worth the time. Not another feed to check."
-          />
-          <BulletList items={operatorReasons} />
-          <div className="mt-8">
-            <CTAButton href={ctaLinks.operator} variant="secondary">
-              I’m a GTM operator
-            </CTAButton>
+          <ArcadeButton href={ctaLinks.founder} color="#ffd23f" solid>
+            I&apos;M A FOUNDER →
+          </ArcadeButton>
+        </div>
+
+        <div className="border-[3px] border-cyan bg-panel p-[30px] shadow-[8px_8px_0_#000]">
+          <Eyebrow className="text-cyan">P2 — FOR GTM OPERATORS</Eyebrow>
+          <h2 className="mb-3 mt-4 font-pixel text-[clamp(14px,1.8vw,19px)] leading-[1.7] text-white">
+            The room runs on operators.
+          </h2>
+          <p className="mb-4 text-[17px] leading-[1.45] text-body">
+            Operators come for the peers, the dinners, the golf, and founders worth the time.
+          </p>
+          <div className="mb-6 grid gap-[10px] text-base leading-[1.4] text-body">
+            {operatorReasons.map((reason) => (
+              <Bullet key={reason} color="#52d8ff">
+                {reason}
+              </Bullet>
+            ))}
           </div>
-        </article>
+          <ArcadeButton href={ctaLinks.operator} color="#52d8ff">
+            I&apos;M A GTM OPERATOR →
+          </ArcadeButton>
+        </div>
       </section>
 
-      <section id="formats" className="relative z-10 border-y border-stone-900/10 bg-stone-900/[0.03] px-5 py-20 sm:px-8 sm:py-24 lg:px-10">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-            <SectionHeader
-              eyebrow="Bay Area first"
-              title="Trust gets built over dinner, not on a stage."
-              body="The GTM Table starts in the Bay Area. Small rooms. Dinners, salons, operator tables, golf. A sponsor covers the check."
-            />
-            <div className="grid gap-4 sm:grid-cols-2">
-              {eventFormats.map((format) => (
-                <div key={format.title} className="rounded-[1.5rem] border border-[#d6b15f]/35 bg-[#d6b15f]/[0.09] p-6">
-                  <h3 className="text-xl font-semibold tracking-[-0.03em] text-stone-900">{format.title}</h3>
-                  <p className="mt-3 leading-7 text-stone-600">{format.body}</p>
-                </div>
-              ))}
-            </div>
+      <section id="formats" className="border-y-[3px] border-edge-dim bg-band">
+        <div className="mx-auto grid max-w-[1140px] grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-start gap-10 px-6 py-16">
+          <div>
+            <Eyebrow className="text-green">BAY AREA FIRST — STAGE SELECT</Eyebrow>
+            <h2 className="mb-3 mt-[18px] font-pixel text-[clamp(16px,2.2vw,24px)] leading-[1.7] text-white">
+              Trust gets built over dinner, not on a stage.
+            </h2>
+            <p className="text-[17px] leading-[1.45] text-muted">
+              The GTM Table starts in the Bay Area. Small rooms. Dinners, salons, operator tables, golf. A sponsor covers the check.
+            </p>
+          </div>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4">
+            {eventFormats.map((format) => (
+              <div
+                key={format.title}
+                className="border-[3px] border-edge bg-panel p-[18px] shadow-[5px_5px_0_#000]"
+              >
+                <div className={`font-pixel text-[10px] leading-[1.6] ${format.accent}`}>{format.title}</div>
+                <p className="mt-2 text-base leading-[1.4] text-body">{format.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="sponsors" className="relative z-10 mx-auto grid max-w-7xl gap-10 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-[0.85fr_1.15fr] lg:px-10">
-        <SectionHeader
-          eyebrow="Sponsors"
-          title="Cover the room where the deals get talked about."
-          body="Sponsors pay for the dinners, the golf, and the rooms that bring founders and operators together. They get proximity and trust. Not a booth. Not a lead list."
-        />
-        <div className="rounded-[2rem] border border-stone-900/10 bg-white p-6 shadow-sm sm:p-8">
-          <h3 className="text-2xl font-semibold tracking-[-0.035em] text-stone-900">Why sponsors pay</h3>
-          <BulletList items={sponsorValue} />
-          <div className="mt-8 rounded-2xl border border-[#d6b15f]/35 bg-[#d6b15f]/[0.09] p-5">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#8a6a1f]">Sponsor standard</p>
-            <p className="mt-3 leading-7 text-stone-600">
+      <section
+        id="sponsors"
+        className="mx-auto grid max-w-[1140px] grid-cols-[repeat(auto-fit,minmax(320px,1fr))] items-start gap-10 px-6 py-[72px]"
+      >
+        <div>
+          <Eyebrow className="text-magenta">P3 — SPONSORS</Eyebrow>
+          <h2 className="mb-3 mt-[18px] font-pixel text-[clamp(16px,2.2vw,24px)] leading-[1.7] text-white">
+            Cover the room where the deals get talked about.
+          </h2>
+          <p className="text-[17px] leading-[1.45] text-muted">
+            Sponsors cover the dinners, the golf, and the rooms that bring founders and operators together. They get proximity and trust. Not a booth. Not a lead list.
+          </p>
+        </div>
+        <div className="border-[3px] border-magenta bg-panel p-7 shadow-[8px_8px_0_#000]">
+          <h3 className="mb-[18px] font-pixel text-[13px] leading-[1.7] text-white">Why sponsors come</h3>
+          <div className="grid gap-[10px] text-base leading-[1.4] text-body">
+            {sponsorValue.map((item) => (
+              <Bullet key={item} color="#ff5db1">
+                {item}
+              </Bullet>
+            ))}
+          </div>
+          <div className="my-5 border-[3px] border-edge-dim bg-band p-4">
+            <div className="font-pixel text-[9px] leading-[1.8] tracking-[2px] text-magenta">
+              SPONSOR STANDARD
+            </div>
+            <p className="mt-[6px] text-base leading-[1.4] text-body">
               A sponsor has to fit the founders and operators at the table. The room stays small. Operators run it.
             </p>
           </div>
-          <div className="mt-8">
-            <CTAButton href={ctaLinks.sponsor}>I’m interested in sponsoring</CTAButton>
+          <ArcadeButton href={ctaLinks.sponsor} color="#ff5db1" solid>
+            I&apos;M INTERESTED IN SPONSORING →
+          </ArcadeButton>
+        </div>
+      </section>
+
+      <section id="hosts" className="mx-auto max-w-[1140px] px-6 pb-[72px]">
+        <Eyebrow className="text-cyan">GAME MASTERS</Eyebrow>
+
+        <div className="mt-[18px] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-stretch gap-6">
+          {hosts.map((host) => (
+            <div
+              key={host.name}
+              className="border-[3px] border-edge bg-panel p-7 shadow-[8px_8px_0_#000]"
+            >
+              <div className="mb-4 flex items-center gap-4">
+                {/* Headshot placeholder — swap for <Image src="/…" .../> when photos are ready. */}
+                <div
+                  className="flex h-[52px] w-[52px] flex-none items-center justify-center border-[3px] border-black font-pixel text-xs text-void"
+                  style={{ background: host.accent }}
+                >
+                  {host.initials}
+                </div>
+                <div>
+                  <div className="font-pixel text-[13px] leading-[1.6] text-white">{host.name}</div>
+                  <a href={host.linkedin} target="_blank" rel="noreferrer" className="text-[15px]">
+                    LinkedIn →
+                  </a>
+                </div>
+              </div>
+              {host.bio ? (
+                <p className="text-base leading-[1.45] text-body">{host.bio}</p>
+              ) : null}
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-6 flex items-center border-[3px] border-edge-dim bg-band p-7 shadow-[8px_8px_0_#000]">
+          <p className="font-pixel text-[clamp(12px,1.6vw,15px)] leading-[2] text-green">
+            &gt; The promise is the room. The right people. One hard question. Enough trust to say what is actually going on in the deal.
+            <Cursor color="#46f797" />
+          </p>
+        </div>
+      </section>
+
+      <section id="cta" className="border-t-[3px] border-edge-dim bg-band">
+        <div className="mx-auto max-w-[820px] px-6 py-20 text-center">
+          <div
+            data-blink
+            className="font-pixel text-[10px] tracking-[2px] text-gold"
+            style={{ animation: "blink 1.4s steps(1) infinite" }}
+          >
+            — INSERT COIN · REQUEST A SEAT —
+          </div>
+          <h2 className="mb-3 mt-[22px] font-pixel text-[clamp(16px,2.4vw,26px)] leading-[1.7] text-white">
+            Take the seat that fits your role at the table.
+          </h2>
+          <p className="mb-8 text-[17px] text-muted">
+            Founder, operator, or sponsor. Tell us which seat is yours and we take it from there.
+          </p>
+          <div className="flex flex-wrap justify-center gap-[14px]">
+            <ArcadeButton href={ctaLinks.founder} color="#ffd23f" solid>
+              I&apos;M A FOUNDER
+            </ArcadeButton>
+            <ArcadeButton href={ctaLinks.operator} color="#52d8ff">
+              I&apos;M A GTM OPERATOR
+            </ArcadeButton>
+            <ArcadeButton href={ctaLinks.sponsor} color="#ff5db1">
+              SPONSORING
+            </ArcadeButton>
+            <ArcadeButton href={ctaLinks.updates} color="#46f797">
+              KEEP ME POSTED
+            </ArcadeButton>
           </div>
         </div>
       </section>
 
-      <section id="about" className="relative z-10 border-y border-stone-900/10 bg-stone-900/[0.02] px-5 py-20 sm:px-8 sm:py-24 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.72fr_1.28fr]">
-          <div className="rounded-[2rem] border border-stone-900/10 bg-white p-6 shadow-sm sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#8a6a1f]">About Ryan</p>
-            <h2 className="mt-4 text-4xl font-semibold tracking-[-0.045em] text-stone-900">Ryan Mindigo</h2>
-            <p className="mt-5 leading-8 text-stone-600">
-              Ryan is building The GTM Table in the Bay Area. He puts founders across the table from operators who have run the play, and sponsors who cover the room.
-            </p>
-          </div>
-          <div className="flex items-center rounded-[2rem] border border-stone-900/10 bg-[#faf6ec] p-6 shadow-sm sm:p-8 lg:p-10">
-            <p className="text-2xl font-medium leading-10 tracking-[-0.035em] text-stone-800 sm:text-3xl sm:leading-[1.25]">
-              The promise is the room. The right people. One hard question. Enough trust to say what is actually going on in the deal.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative z-10 mx-auto max-w-6xl px-5 py-20 text-center sm:px-8 sm:py-24 lg:px-10">
-        <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#8a6a1f]">Request a seat</p>
-        <h2 className="mx-auto mt-5 max-w-4xl text-4xl font-semibold leading-[1.02] tracking-[-0.055em] text-stone-900 sm:text-5xl lg:text-6xl">
-          Take the seat that fits your role at the table.
-        </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-stone-600">
-          Founder, operator, sponsor, and updates paths currently use local placeholders and should be replaced with final beehiiv URLs when ready.
-        </p>
-        <div className="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-2">
-          <CTAButton href={ctaLinks.founder}>I’m a founder</CTAButton>
-          <CTAButton href={ctaLinks.operator} variant="secondary">
-            I’m a GTM operator
-          </CTAButton>
-          <CTAButton href={ctaLinks.sponsor} variant="secondary">
-            I’m interested in sponsoring
-          </CTAButton>
-          <CTAButton href={ctaLinks.updates} variant="secondary">
-            Keep me posted
-          </CTAButton>
-        </div>
-      </section>
-    </main>
+      <Footer />
+    </div>
   );
 }

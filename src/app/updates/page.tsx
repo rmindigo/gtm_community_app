@@ -10,7 +10,8 @@ export const metadata: Metadata = {
 export default function UpdatesPage() {
   return (
     <PathLayout
-      eyebrow="Stay posted"
+      badge="SPECTATE — KEEP ME POSTED"
+      accent="green"
       title="Hear when the next table opens."
       intro="The GTM Table starts in the Bay Area. Leave your email. We tell you when a room opens near you, and what it is about."
       points={[

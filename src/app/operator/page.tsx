@@ -13,8 +13,20 @@ export const metadata: Metadata = {
 
 export default function OperatorPage() {
   return (
-    <PathLayout eyebrow={persona.eyebrow} title={persona.title} intro={persona.intro} points={persona.points}>
-      <PersonaForm persona={persona.key} fields={persona.fields} ctaLabel={persona.ctaLabel} />
+    <PathLayout
+      badge="P2 — FOR GTM OPERATORS"
+      accent="cyan"
+      title={persona.title}
+      intro={persona.intro}
+      points={persona.points}
+    >
+      <PersonaForm
+        persona={persona.key}
+        fields={persona.fields}
+        ctaLabel={persona.ctaLabel}
+        accent="cyan"
+        formHeader="PARTY UP — ENTER OPERATOR DATA"
+      />
     </PathLayout>
   );
 }

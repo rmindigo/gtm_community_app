@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Press_Start_2P, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import Scanlines from "./_components/Scanlines";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const pressStart = Press_Start_2P({
+  variable: "--font-press-start",
   subsets: ["latin"],
+  weight: "400",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -27,9 +30,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}
+      className={`${pressStart.variable} ${plexMono.variable} scroll-smooth antialiased`}
     >
-      <body>{children}</body>
+      <body>
+        <Scanlines />
+        {children}
+      </body>
     </html>
   );
 }

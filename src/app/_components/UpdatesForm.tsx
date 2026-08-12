@@ -2,12 +2,13 @@
 
 import { useActionState } from "react";
 import { subscribe, type SubscribeState } from "../actions";
+import { ACCENTS } from "@/lib/theme";
 
 const initialState: SubscribeState = { status: "idle" };
 
+const labelClass = "font-pixel text-[10px] leading-[1.6] tracking-[1px] text-white";
 const inputClass =
-  "mt-2 w-full rounded-xl border border-stone-900/15 bg-white px-4 py-3 text-stone-900 shadow-sm outline-none transition placeholder:text-stone-400 focus:border-[#d6b15f] focus:ring-2 focus:ring-[#d6b15f]/30";
-const labelClass = "block text-sm font-semibold text-stone-800";
+  "w-full border-[3px] border-edge bg-band px-[14px] py-[10px] text-[17px] text-ink outline-none";
 
 // "persona" doubles as the routing key: whichever role they pick decides which
 // of the three audiences they land in.
@@ -22,12 +23,12 @@ export default function UpdatesForm() {
 
   if (state.status === "success") {
     return (
-      <div className="rounded-[2rem] border border-stone-900/10 bg-white p-8 text-center shadow-xl shadow-stone-900/5">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#8a6a1f]">Posted</p>
-        <h2 className="mt-4 text-2xl font-semibold tracking-[-0.035em] text-stone-900">
+      <div className="border-[3px] border-edge bg-panel p-8 text-center shadow-[8px_8px_0_#000]">
+        <p className="font-pixel text-[10px] tracking-[2px] text-green">CONTINUE?</p>
+        <h2 className="mt-4 font-pixel text-[13px] leading-[1.7] text-white">
           You&apos;re on the list.
         </h2>
-        <p className="mx-auto mt-3 max-w-md leading-7 text-stone-600">
+        <p className="mx-auto mt-3 max-w-md text-base leading-[1.45] text-body">
           We tell you when a Bay Area table opens. Nothing else.
         </p>
       </div>
@@ -37,7 +38,7 @@ export default function UpdatesForm() {
   return (
     <form
       action={formAction}
-      className="rounded-[2rem] border border-stone-900/10 bg-white p-6 shadow-xl shadow-stone-900/5 sm:p-8"
+      className="grid gap-[22px] border-[3px] border-edge bg-panel px-[26px] py-[30px] shadow-[8px_8px_0_#000]"
     >
       {/* Honeypot — hidden from users, catches bots. */}
       <div aria-hidden className="hidden">
@@ -47,44 +48,50 @@ export default function UpdatesForm() {
         </label>
       </div>
 
-      <div className="space-y-5">
-        <div>
-          <label htmlFor="u-email" className={labelClass}>
-            Work email<span className="text-[#8a6a1f]"> *</span>
-          </label>
-          <input id="u-email" name="email" type="email" required className={inputClass} />
-        </div>
-        <div>
-          <label htmlFor="u-persona" className={labelClass}>
-            Which are you?<span className="text-[#8a6a1f]"> *</span>
-          </label>
-          <select id="u-persona" name="persona" required defaultValue="" className={inputClass}>
-            <option value="" disabled>
-              Select…
-            </option>
-            {roles.map((role) => (
-              <option key={role.value} value={role.value}>
-                {role.label}
-              </option>
-            ))}
-          </select>
-        </div>
+      <div className="font-pixel text-[10px] tracking-[2px] text-green">
+        SPECTATE — ENTER EMAIL
       </div>
 
+      <label htmlFor="u-email" className="grid gap-2">
+        <span className={labelClass}>
+          WORK EMAIL<span className="text-magenta"> *</span>
+        </span>
+        <input id="u-email" name="email" type="email" required className={inputClass} />
+      </label>
+
+      <label htmlFor="u-persona" className="grid gap-2">
+        <span className={labelClass}>
+          WHICH ARE YOU?<span className="text-magenta"> *</span>
+        </span>
+        <select id="u-persona" name="persona" required defaultValue="" className={inputClass}>
+          <option value="" disabled>
+            Select…
+          </option>
+          {roles.map((role) => (
+            <option key={role.value} value={role.value}>
+              {role.label}
+            </option>
+          ))}
+        </select>
+      </label>
+
       {state.status === "error" && state.message ? (
-        <p className="mt-5 rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <p className="border-[3px] border-magenta bg-band px-4 py-3 text-base text-magenta">
           {state.message}
         </p>
       ) : null}
 
-      <button
-        type="submit"
-        disabled={pending}
-        className="mt-7 inline-flex min-h-12 w-full items-center justify-center rounded-xl border border-[#d6b15f] bg-[#e7c778] px-5 py-3 text-sm font-semibold text-[#2a2109] shadow-[0_14px_44px_rgba(214,177,95,0.28)] transition hover:bg-[#eed08a] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
-      >
-        {pending ? "Sending…" : "Keep me posted →"}
-      </button>
-      <p className="mt-4 text-sm text-stone-400">No spam. Word when a table opens.</p>
+      <div>
+        <button
+          type="submit"
+          disabled={pending}
+          className="press cursor-pointer border-[3px] border-black px-5 py-4 font-pixel text-[11px] text-void shadow-[5px_5px_0_#000] hover:shadow-[2px_2px_0_#000] disabled:cursor-not-allowed disabled:opacity-60"
+          style={{ background: ACCENTS.green }}
+        >
+          {pending ? "LOADING…" : "PRESS START — KEEP ME POSTED →"}
+        </button>
+        <p className="mt-4 text-[15px] text-muted">No spam. Word when a table opens.</p>
+      </div>
     </form>
   );
 }

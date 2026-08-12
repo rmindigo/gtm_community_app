@@ -13,8 +13,20 @@ export const metadata: Metadata = {
 
 export default function SponsorPage() {
   return (
-    <PathLayout eyebrow={persona.eyebrow} title={persona.title} intro={persona.intro} points={persona.points}>
-      <PersonaForm persona={persona.key} fields={persona.fields} ctaLabel={persona.ctaLabel} />
+    <PathLayout
+      badge="P3 — SPONSORS"
+      accent="magenta"
+      title={persona.title}
+      intro={persona.intro}
+      points={persona.points}
+    >
+      <PersonaForm
+        persona={persona.key}
+        fields={persona.fields}
+        ctaLabel={persona.ctaLabel}
+        accent="magenta"
+        formHeader="CO-OP MODE — ENTER SPONSOR DATA"
+      />
     </PathLayout>
   );
 }

@@ -3,23 +3,34 @@
 import { useActionState } from "react";
 import { subscribe, type SubscribeState } from "../actions";
 import type { Field, PersonaKey } from "@/lib/personas";
+import { ACCENTS, type AccentName } from "@/lib/theme";
 
 const initialState: SubscribeState = { status: "idle" };
 
-const labelClass = "block text-sm font-semibold text-stone-800";
+const labelClass = "font-pixel text-[10px] leading-[1.6] tracking-[1px] text-white";
 const inputClass =
-  "mt-2 w-full rounded-xl border border-stone-900/15 bg-white px-4 py-3 text-stone-900 shadow-sm outline-none transition placeholder:text-stone-400 focus:border-[#d6b15f] focus:ring-2 focus:ring-[#d6b15f]/30";
+  "w-full border-[3px] border-edge bg-band px-[14px] py-[10px] text-[17px] text-ink outline-none";
 
 function FieldInput({ field }: { field: Field }) {
   const id = `f-${field.name}`;
+  const label = (
+    <span className={labelClass}>
+      {field.label.toUpperCase()}
+      {field.required ? <span className="text-magenta"> *</span> : null}
+    </span>
+  );
+
   return (
-    <div>
-      <label htmlFor={id} className={labelClass}>
-        {field.label}
-        {field.required ? <span className="text-[#8a6a1f]"> *</span> : null}
-      </label>
+    <label htmlFor={id} className="grid gap-2">
+      {label}
       {field.type === "textarea" ? (
-        <textarea id={id} name={field.name} required={field.required} rows={3} className={inputClass} />
+        <textarea
+          id={id}
+          name={field.name}
+          required={field.required}
+          rows={4}
+          className={`${inputClass} resize-y`}
+        />
       ) : field.type === "select" ? (
         <select id={id} name={field.name} required={field.required} defaultValue="" className={inputClass}>
           <option value="" disabled>
@@ -32,15 +43,9 @@ function FieldInput({ field }: { field: Field }) {
           ))}
         </select>
       ) : (
-        <input
-          id={id}
-          name={field.name}
-          type={field.type}
-          required={field.required}
-          className={inputClass}
-        />
+        <input id={id} name={field.name} type={field.type} required={field.required} className={inputClass} />
       )}
-    </div>
+    </label>
   );
 }
 
@@ -48,21 +53,27 @@ export default function PersonaForm({
   persona,
   fields,
   ctaLabel,
+  accent,
+  formHeader,
 }: {
   persona: PersonaKey;
   fields: Field[];
   ctaLabel: string;
+  accent: AccentName;
+  // e.g. "NEW GAME — ENTER PLAYER DATA"
+  formHeader: string;
 }) {
   const [state, formAction, pending] = useActionState(subscribe, initialState);
+  const color = ACCENTS[accent];
 
   if (state.status === "success") {
     return (
-      <div className="rounded-[2rem] border border-stone-900/10 bg-white p-8 text-center shadow-xl shadow-stone-900/5">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#8a6a1f]">Received</p>
-        <h2 className="mt-4 text-2xl font-semibold tracking-[-0.035em] text-stone-900">
+      <div className="border-[3px] border-edge bg-panel p-8 text-center shadow-[8px_8px_0_#000]">
+        <p className="font-pixel text-[10px] tracking-[2px] text-green">STAGE CLEARED</p>
+        <h2 className="mt-4 font-pixel text-[13px] leading-[1.7] text-white">
           You&apos;re on the list.
         </h2>
-        <p className="mx-auto mt-3 max-w-md leading-7 text-stone-600">
+        <p className="mx-auto mt-3 max-w-md text-base leading-[1.45] text-body">
           Check your inbox for a note. If the table fits, you hear from us.
         </p>
       </div>
@@ -72,7 +83,7 @@ export default function PersonaForm({
   return (
     <form
       action={formAction}
-      className="rounded-[2rem] border border-stone-900/10 bg-white p-6 shadow-xl shadow-stone-900/5 sm:p-8"
+      className="grid gap-[22px] border-[3px] border-edge bg-panel px-[26px] py-[30px] shadow-[8px_8px_0_#000]"
     >
       <input type="hidden" name="persona" value={persona} />
       {/* Honeypot — hidden from users, catches bots. */}
@@ -83,28 +94,29 @@ export default function PersonaForm({
         </label>
       </div>
 
-      <div className="space-y-5">
-        {fields.map((field) => (
-          <FieldInput key={field.name} field={field} />
-        ))}
-      </div>
+      <div className="font-pixel text-[10px] tracking-[2px] text-green">{formHeader}</div>
+
+      {fields.map((field) => (
+        <FieldInput key={field.name} field={field} />
+      ))}
 
       {state.status === "error" && state.message ? (
-        <p className="mt-5 rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <p className="border-[3px] border-magenta bg-band px-4 py-3 text-base text-magenta">
           {state.message}
         </p>
       ) : null}
 
-      <button
-        type="submit"
-        disabled={pending}
-        className="mt-7 inline-flex min-h-12 w-full items-center justify-center rounded-xl border border-[#d6b15f] bg-[#e7c778] px-5 py-3 text-sm font-semibold text-[#2a2109] shadow-[0_14px_44px_rgba(214,177,95,0.28)] transition hover:bg-[#eed08a] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
-      >
-        {pending ? "Sending…" : `${ctaLabel} →`}
-      </button>
-      <p className="mt-4 text-sm text-stone-400">
-        We keep the list short. No spam, no sharing.
-      </p>
+      <div>
+        <button
+          type="submit"
+          disabled={pending}
+          className="press cursor-pointer border-[3px] border-black px-5 py-4 font-pixel text-[11px] text-void shadow-[5px_5px_0_#000] hover:shadow-[2px_2px_0_#000] disabled:cursor-not-allowed disabled:opacity-60"
+          style={{ background: color }}
+        >
+          {pending ? "LOADING…" : `PRESS START — ${ctaLabel.toUpperCase()} →`}
+        </button>
+        <p className="mt-4 text-[15px] text-muted">We keep the list short. No spam, no sharing.</p>
+      </div>
     </form>
   );
 }

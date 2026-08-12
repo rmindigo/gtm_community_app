@@ -1,15 +1,25 @@
 @import "tailwindcss";
 
-:root {
-  --background: #f5f2ea;
-  --foreground: #1c1a17;
-}
+/* Retro arcade design tokens. See design_handoff_gtm_table_arcade/README.md.
+   Rule of the system: no border-radius anywhere, 3px borders, hard un-blurred
+   offset shadows. */
+@theme {
+  --color-void: #0a0a14; /* page background */
+  --color-band: #0d0d20; /* inset band + input wells */
+  --color-panel: #13132b; /* raised panels and cards */
+  --color-edge: #34346a; /* panel border */
+  --color-edge-dim: #2a2a52; /* band + inset border */
+  --color-ink: #e8e8f0; /* default text */
+  --color-body: #d8d8ec; /* paragraph text */
+  --color-muted: #a9a9c8; /* secondary text */
+  --color-gold: #ffd23f; /* founders / primary */
+  --color-cyan: #52d8ff; /* operators */
+  --color-magenta: #ff5db1; /* sponsors */
+  --color-green: #46f797; /* meta / status */
+  --color-deep: #2b2b5e; /* h1 text-shadow */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-pixel: var(--font-press-start), monospace;
+  --font-mono: var(--font-plex-mono), monospace;
 }
 
 * {
@@ -17,22 +27,77 @@
 }
 
 html {
-  background: var(--background);
+  background: var(--color-void);
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-void);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+}
+
+/* Each page sets --accent; links, focus rings and selection follow it. */
+:root {
+  --accent: var(--color-gold);
 }
 
 a {
+  color: var(--color-gold);
   text-decoration: none;
 }
 
+a:hover {
+  color: #ffffff;
+}
+
 ::selection {
-  background: rgba(214, 177, 95, 0.35);
-  color: #1c1a17;
+  background: var(--accent);
+  color: var(--color-void);
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-mono);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* The pressed-arcade-button move: card shifts into its own shadow. */
+.press {
+  transition:
+    transform 100ms linear,
+    box-shadow 100ms linear;
+}
+
+.press:hover {
+  transform: translate(3px, 3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .press {
+    transition: none;
+  }
+
+  [data-blink] {
+    animation: none !important;
+  }
 }
