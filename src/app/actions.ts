@@ -14,22 +14,47 @@ function isPersonaKey(value: unknown): value is PersonaKey {
   return value === "founder" || value === "operator" || value === "sponsor";
 }
 
-// Wraps the plain-text lines in a light, on-brand HTML shell.
+// Arcade palette, shared with globals.css.
+const MAIL = {
+  void: "#0a0a14",
+  panel: "#13132b",
+  edge: "#34346a",
+  white: "#ffffff",
+  body: "#d8d8ec",
+  muted: "#a9a9c8",
+  gold: "#ffd23f",
+};
+
+// Press Start 2P is a webfont and mail clients will not load it, so the
+// pixel look is carried by a monospace stack every client already has.
+const MONO = "'Courier New', Courier, monospace";
+
+// Table-based layout with inline styles and no border-radius or box-shadow —
+// the parts of the arcade system that survive Gmail, Outlook and Apple Mail.
 function renderEmail(heading: string, body: string[]): string {
   const paragraphs = body
     .map(
       (line) =>
-        `<p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#57534e;">${line}</p>`,
+        `<p style="margin:0 0 16px;font-family:${MONO};font-size:15px;line-height:1.6;color:${MAIL.body};">${line}</p>`,
     )
     .join("");
-  return `<div style="background:#f5f2ea;padding:32px;font-family:Arial,Helvetica,sans-serif;">
-    <div style="max-width:520px;margin:0 auto;background:#ffffff;border:1px solid rgba(28,26,23,0.08);border-radius:20px;padding:32px;">
-      <p style="margin:0 0 20px;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#8a6a1f;">The GTM Table</p>
-      <h1 style="margin:0 0 16px;font-size:24px;line-height:1.2;color:#1c1a17;">${heading}</h1>
-      ${paragraphs}
-      <p style="margin:24px 0 0;font-size:14px;color:#a8a29e;">The GTM Table — Bay Area enterprise GTM.</p>
-    </div>
-  </div>`;
+
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:${MAIL.void};margin:0;padding:0;">
+    <tr>
+      <td align="center" style="padding:32px 16px;">
+        <table role="presentation" width="520" cellpadding="0" cellspacing="0" border="0" style="max-width:520px;width:100%;background-color:${MAIL.panel};border:3px solid ${MAIL.edge};">
+          <tr>
+            <td style="padding:32px;">
+              <p style="margin:0 0 22px;font-family:${MONO};font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:${MAIL.gold};">The GTM Table</p>
+              <h1 style="margin:0 0 20px;font-family:${MONO};font-size:20px;line-height:1.5;font-weight:700;color:${MAIL.white};">${heading}</h1>
+              ${paragraphs}
+              <p style="margin:28px 0 0;font-family:${MONO};font-size:13px;line-height:1.6;color:${MAIL.muted};">The GTM Table — Bay Area enterprise GTM.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>`;
 }
 
 export async function subscribe(
@@ -114,7 +139,15 @@ export async function subscribe(
     // 3. Notify the operator with the full application (optional).
     if (notifyTo) {
       const rows = Object.entries(answers)
-        .map(([label, value]) => `<p style="margin:0 0 8px;"><strong>${label}:</strong> ${value}</p>`)
+        .map(
+          ([label, value]) =>
+            `<tr>
+              <td style="padding:0 0 4px;font-family:${MONO};font-size:11px;letter-spacing:1px;text-transform:uppercase;color:${MAIL.gold};">${label}</td>
+            </tr>
+            <tr>
+              <td style="padding:0 0 18px;font-family:${MONO};font-size:15px;line-height:1.5;color:${MAIL.body};">${value}</td>
+            </tr>`,
+        )
         .join("");
       await resend.emails.send({
         from,
@@ -122,7 +155,21 @@ export async function subscribe(
         // Reply goes straight back to the applicant.
         replyTo: email,
         subject: `New ${persona.key} — ${name}`,
-        html: `<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#1c1a17;">${rows}</div>`,
+        html: `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:${MAIL.void};margin:0;padding:0;">
+          <tr>
+            <td align="center" style="padding:32px 16px;">
+              <table role="presentation" width="560" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;width:100%;background-color:${MAIL.panel};border:3px solid ${MAIL.edge};">
+                <tr>
+                  <td style="padding:32px;">
+                    <p style="margin:0 0 24px;font-family:${MONO};font-size:12px;letter-spacing:3px;text-transform:uppercase;color:${MAIL.gold};">New ${persona.key}</p>
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${rows}</table>
+                    <p style="margin:12px 0 0;font-family:${MONO};font-size:13px;line-height:1.6;color:${MAIL.muted};">Reply to this email to reach them directly.</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>`,
       });
     }
   } catch (error) {
