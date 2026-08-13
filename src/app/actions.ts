@@ -66,6 +66,10 @@ export async function subscribe(
   const from = process.env.RESEND_FROM;
   const audienceId = process.env[persona.audienceEnv];
   const notifyTo = process.env.RESEND_NOTIFY_TO;
+  // RESEND_FROM only has to live on the verified domain — no mailbox needed.
+  // Replies go here instead, so they reach a real inbox. Falls back to the
+  // notify address when unset.
+  const replyTo = process.env.RESEND_REPLY_TO || notifyTo;
 
   // Not yet configured (no domain/keys). Don't fail the user — log and succeed
   // so the form is fully testable now. Wire keys later and it starts sending.
@@ -96,6 +100,7 @@ export async function subscribe(
     await resend.emails.send({
       from,
       to: email,
+      ...(replyTo ? { replyTo } : {}),
       subject: persona.email.subject,
       html: renderEmail(persona.email.heading, persona.email.body),
     });
@@ -108,6 +113,8 @@ export async function subscribe(
       await resend.emails.send({
         from,
         to: notifyTo,
+        // Reply goes straight back to the applicant.
+        replyTo: email,
         subject: `New ${persona.key} — ${name}`,
         html: `<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#1c1a17;">${rows}</div>`,
       });
