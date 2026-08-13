@@ -80,16 +80,24 @@ export async function subscribe(
     return { status: "error", message: "Enter a valid email." };
   }
 
-  // Collect every configured field into a flat record for the notification.
+  // Two shapes of the same submission: `answers` is keyed by question for the
+  // notification email; `properties` is keyed by field name for Resend, so
+  // segments can filter on them. Long free-text is left out of properties —
+  // it does not segment usefully and belongs in the notification.
   const answers: Record<string, string> = {};
+  const properties: Record<string, string> = {};
   for (const field of persona.fields) {
     const value = (formData.get(field.name) as string)?.trim();
-    if (value) answers[field.label] = value;
+    if (!value) continue;
+    answers[field.label] = value;
+    if (field.type !== "textarea" && field.name !== "email" && field.name !== "name") {
+      properties[field.name] = value;
+    }
   }
 
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.RESEND_FROM;
-  const audienceId = process.env[persona.audienceEnv];
+  const segmentId = process.env[persona.segmentEnv];
   const notifyTo = process.env.RESEND_NOTIFY_TO;
   // RESEND_FROM only has to live on the verified domain — no mailbox needed.
   // Replies go here instead, so they reach a real inbox. Falls back to the
@@ -108,18 +116,24 @@ export async function subscribe(
 
   const resend = new Resend(apiKey);
 
-  // 1. Bucket the contact into this persona's audience. Deliberately outside
-  // the main try: a duplicate applicant or a bad audience id must not cost us
-  // the confirmation and the notification. Log it and carry on.
-  if (audienceId) {
+  // 1. Store the contact. Deliberately outside the main try: a duplicate
+  // applicant or a bad segment id must not cost us the confirmation and the
+  // notification. Log it and carry on.
+  //
+  // Resend is one audience with segments and custom properties (audienceId is
+  // deprecated). `persona` always goes on as a property, so segments can be
+  // rebuilt in the dashboard without a deploy; the segment id is optional and
+  // just adds the contact directly.
+  {
     const [firstName, ...rest] = name ? name.split(" ") : [];
     try {
       await resend.contacts.create({
-        audienceId,
         email,
         firstName: firstName || undefined,
         lastName: rest.join(" ") || undefined,
         unsubscribed: false,
+        properties: { persona: persona.key, ...properties },
+        ...(segmentId ? { segments: [{ id: segmentId }] } : {}),
       });
     } catch (error) {
       console.error(`[subscribe] contact not stored for ${persona.key}:`, error);

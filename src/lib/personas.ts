@@ -1,7 +1,7 @@
 // Shared, secret-free config for the three intake personas.
 // Field definitions render the forms (client) and drive validation + the
 // confirmation email (server). Actual Resend keys/audience IDs live in env,
-// never here — `audienceEnv` only names the env var to read at request time.
+// never here — `segmentEnv` only names the env var to read at request time.
 
 export type FieldType = "text" | "email" | "textarea" | "select";
 
@@ -23,8 +23,8 @@ export type Persona = {
   intro: string;
   points: string[];
   ctaLabel: string;
-  // Name of the env var holding this persona's Resend audience id.
-  audienceEnv: string;
+  // Name of the env var holding this persona's Resend segment id.
+  segmentEnv: string;
   fields: Field[];
   // Confirmation email sent to the subscriber.
   email: { subject: string; heading: string; body: string[] };
@@ -45,7 +45,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       "Talk through the buyer, the deal, the hire, the price, the next segment.",
     ],
     ctaLabel: "Request a seat",
-    audienceEnv: "RESEND_AUDIENCE_FOUNDER",
+    segmentEnv: "RESEND_SEGMENT_FOUNDER",
     fields: [
       { name: "name", label: "Name", type: "text", required: true },
       { name: "email", label: "Work email", type: "email", required: true },
@@ -97,7 +97,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       "Come to the dinners and the golf across the Bay Area.",
     ],
     ctaLabel: "Join the network",
-    audienceEnv: "RESEND_AUDIENCE_OPERATOR",
+    segmentEnv: "RESEND_SEGMENT_OPERATOR",
     fields: [
       { name: "name", label: "Name", type: "text", required: true },
       { name: "email", label: "Work email", type: "email", required: true },
@@ -154,7 +154,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       "Time to earn the trust of the people who sign.",
     ],
     ctaLabel: "Start a conversation",
-    audienceEnv: "RESEND_AUDIENCE_SPONSOR",
+    segmentEnv: "RESEND_SEGMENT_SPONSOR",
     fields: [
       { name: "name", label: "Name", type: "text", required: true },
       { name: "email", label: "Work email", type: "email", required: true },
