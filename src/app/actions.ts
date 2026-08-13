@@ -83,10 +83,12 @@ export async function subscribe(
 
   const resend = new Resend(apiKey);
 
-  try {
-    // 1. Add the contact to this persona's audience.
-    if (audienceId) {
-      const [firstName, ...rest] = name ? name.split(" ") : [];
+  // 1. Bucket the contact into this persona's audience. Deliberately outside
+  // the main try: a duplicate applicant or a bad audience id must not cost us
+  // the confirmation and the notification. Log it and carry on.
+  if (audienceId) {
+    const [firstName, ...rest] = name ? name.split(" ") : [];
+    try {
       await resend.contacts.create({
         audienceId,
         email,
@@ -94,8 +96,12 @@ export async function subscribe(
         lastName: rest.join(" ") || undefined,
         unsubscribed: false,
       });
+    } catch (error) {
+      console.error(`[subscribe] contact not stored for ${persona.key}:`, error);
     }
+  }
 
+  try {
     // 2. Send the persona confirmation email to the subscriber.
     await resend.emails.send({
       from,
