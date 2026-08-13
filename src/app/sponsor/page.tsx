@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function SponsorPage() {
   return (
     <PathLayout
-      badge="P3 — SPONSORS"
+      badge="SPONSORS"
       accent="magenta"
       title={persona.title}
       intro={persona.intro}
@@ -25,7 +25,7 @@ export default function SponsorPage() {
         fields={persona.fields}
         ctaLabel={persona.ctaLabel}
         accent="magenta"
-        formHeader="CO-OP MODE — ENTER SPONSOR DATA"
+        formHeader="COVER THE ROOM"
       />
     </PathLayout>
   );

@@ -7,7 +7,7 @@ type PathLayoutProps = {
   title: string;
   intro: string;
   points: string[];
-  // Player badge above the headline, e.g. "P1 — FOR FOUNDERS".
+  // Badge above the headline, e.g. "FOR FOUNDERS".
   badge: string;
   accent: AccentName;
   children: React.ReactNode;

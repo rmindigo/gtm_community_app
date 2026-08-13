@@ -24,7 +24,7 @@ export default function UpdatesForm() {
   if (state.status === "success") {
     return (
       <div className="border-[3px] border-edge bg-panel p-8 text-center shadow-[8px_8px_0_#000]">
-        <p className="font-pixel text-[10px] tracking-[2px] text-green">CONTINUE?</p>
+        <p className="font-pixel text-[10px] tracking-[2px] text-green">POSTED</p>
         <h2 className="mt-4 font-pixel text-[13px] leading-[1.7] text-white">
           You&apos;re on the list.
         </h2>
@@ -49,7 +49,7 @@ export default function UpdatesForm() {
       </div>
 
       <div className="font-pixel text-[10px] tracking-[2px] text-green">
-        SPECTATE — ENTER EMAIL
+        LEAVE YOUR EMAIL
       </div>
 
       <label htmlFor="u-email" className="grid gap-2">
@@ -88,7 +88,7 @@ export default function UpdatesForm() {
           className="press cursor-pointer border-[3px] border-black px-5 py-4 font-pixel text-[11px] text-void shadow-[5px_5px_0_#000] hover:shadow-[2px_2px_0_#000] disabled:cursor-not-allowed disabled:opacity-60"
           style={{ background: ACCENTS.green }}
         >
-          {pending ? "LOADING…" : "PRESS START — KEEP ME POSTED →"}
+          {pending ? "SENDING…" : "KEEP ME POSTED →"}
         </button>
         <p className="mt-4 text-[15px] text-muted">No spam. Word when a table opens.</p>
       </div>

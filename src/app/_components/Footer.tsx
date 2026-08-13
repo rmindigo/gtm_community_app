@@ -6,7 +6,7 @@ export default function Footer({
   prefix = "",
   width = "max-w-[1140px]",
   // Home carries the long sign-off; the form pages keep it short.
-  tagline = "The GTM Table. Bay Area. © 2026 · GAME OVER? PRESS START.",
+  tagline = "The GTM Table. Bay Area. © 2026",
 }: {
   prefix?: string;
   width?: string;

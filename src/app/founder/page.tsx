@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function FounderPage() {
   return (
     <PathLayout
-      badge="P1 — FOR FOUNDERS"
+      badge="FOR FOUNDERS"
       accent="gold"
       title={persona.title}
       intro={persona.intro}
@@ -25,7 +25,7 @@ export default function FounderPage() {
         fields={persona.fields}
         ctaLabel={persona.ctaLabel}
         accent="gold"
-        formHeader="NEW GAME — ENTER PLAYER DATA"
+        formHeader="BRING THE DEAL"
       />
     </PathLayout>
   );

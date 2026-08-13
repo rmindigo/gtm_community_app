@@ -36,26 +36,26 @@ const hosts = [
 
 const players = [
   {
-    tag: "P1 · FOUNDER →",
+    tag: "FOUNDER →",
     href: ctaLinks.founder,
     note: "Sit with operators who have closed the deal you are working.",
     accent: "#ffd23f",
     solid: true,
   },
   {
-    tag: "P2 · GTM OPERATOR →",
+    tag: "GTM OPERATOR →",
     href: ctaLinks.operator,
     note: "Trade notes with people who have carried the number. Meet founders worth the time.",
     accent: "#52d8ff",
   },
   {
-    tag: "P3 · SPONSOR →",
+    tag: "SPONSOR →",
     href: ctaLinks.sponsor,
     note: "Cover the table. The dinners, the golf, the rooms.",
     accent: "#ff5db1",
   },
   {
-    tag: "SPECTATE · KEEP ME POSTED →",
+    tag: "KEEP ME POSTED →",
     href: ctaLinks.updates,
     note: "Hear when the next Bay Area table opens.",
     accent: "#46f797",
@@ -229,7 +229,7 @@ export default function Home() {
           </p>
 
           <div className="mb-[14px] mt-[34px] flex items-center gap-2 font-pixel text-[10px] tracking-[1px] text-gold">
-            <PixelStar /> SELECT YOUR PLAYER <PixelStar />
+            <PixelStar /> PICK YOUR SEAT <PixelStar />
           </div>
 
           <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-[14px]">
@@ -261,7 +261,7 @@ export default function Home() {
           </div>
 
           <div className="mt-[26px] font-pixel text-[10px] leading-[1.8] tracking-[1px] text-green">
-            NEXT LEVEL: {firstTable.month} · SAN FRANCISCO · {firstTable.seats} SEATS
+            NEXT TABLE: {firstTable.month} · SAN FRANCISCO · {firstTable.seats} SEATS
           </div>
         </div>
 
@@ -286,7 +286,7 @@ export default function Home() {
         className="mx-auto grid max-w-[1140px] grid-cols-[repeat(auto-fit,minmax(320px,1fr))] items-start gap-11 border-t-[3px] border-edge-dim px-6 py-[72px]"
       >
         <div>
-          <Eyebrow className="text-green">HOW IT WORKS — QUEST LOG</Eyebrow>
+          <Eyebrow className="text-green">HOW IT WORKS</Eyebrow>
           <h2 className="mb-3 mt-[18px] font-pixel text-[clamp(16px,2.2vw,24px)] leading-[1.7] text-white">
             One room. One problem. The people who have solved it.
           </h2>
@@ -315,7 +315,7 @@ export default function Home() {
 
       <section className="mx-auto grid max-w-[1140px] grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6 px-6 pb-[72px]">
         <div className="border-[3px] border-gold bg-panel p-[30px] shadow-[8px_8px_0_#000]">
-          <Eyebrow>P1 — FOR FOUNDERS</Eyebrow>
+          <Eyebrow>FOR FOUNDERS</Eyebrow>
           <h2 className="mb-3 mt-4 font-pixel text-[clamp(14px,1.8vw,19px)] leading-[1.7] text-white">
             Get the operator&apos;s read before the mistake compounds.
           </h2>
@@ -335,7 +335,7 @@ export default function Home() {
         </div>
 
         <div className="border-[3px] border-cyan bg-panel p-[30px] shadow-[8px_8px_0_#000]">
-          <Eyebrow className="text-cyan">P2 — FOR GTM OPERATORS</Eyebrow>
+          <Eyebrow className="text-cyan">FOR GTM OPERATORS</Eyebrow>
           <h2 className="mb-3 mt-4 font-pixel text-[clamp(14px,1.8vw,19px)] leading-[1.7] text-white">
             The room runs on operators.
           </h2>
@@ -358,7 +358,7 @@ export default function Home() {
       <section id="formats" className="border-y-[3px] border-edge-dim bg-band">
         <div className="mx-auto grid max-w-[1140px] grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-start gap-10 px-6 py-16">
           <div>
-            <Eyebrow className="text-green">BAY AREA FIRST — STAGE SELECT</Eyebrow>
+            <Eyebrow className="text-green">BAY AREA FIRST</Eyebrow>
             <h2 className="mb-3 mt-[18px] font-pixel text-[clamp(16px,2.2vw,24px)] leading-[1.7] text-white">
               Trust gets built over dinner, not on a stage.
             </h2>
@@ -385,7 +385,7 @@ export default function Home() {
         className="mx-auto grid max-w-[1140px] grid-cols-[repeat(auto-fit,minmax(320px,1fr))] items-start gap-10 px-6 py-[72px]"
       >
         <div>
-          <Eyebrow className="text-magenta">P3 — SPONSORS</Eyebrow>
+          <Eyebrow className="text-magenta">SPONSORS</Eyebrow>
           <h2 className="mb-3 mt-[18px] font-pixel text-[clamp(16px,2.2vw,24px)] leading-[1.7] text-white">
             Cover the room where the deals get talked about.
           </h2>
@@ -417,7 +417,7 @@ export default function Home() {
       </section>
 
       <section id="hosts" className="mx-auto max-w-[1140px] px-6 pb-[72px]">
-        <Eyebrow className="text-cyan">GAME MASTERS</Eyebrow>
+        <Eyebrow className="text-cyan">WHO RUNS THE TABLE</Eyebrow>
 
         <div className="mt-[18px] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-stretch gap-6">
           {hosts.map((host) => (
@@ -462,7 +462,7 @@ export default function Home() {
             className="font-pixel text-[10px] tracking-[2px] text-gold"
             style={{ animation: "blink 1.4s steps(1) infinite" }}
           >
-            — INSERT COIN · REQUEST A SEAT —
+            — REQUEST A SEAT —
           </div>
           <h2 className="mb-3 mt-[22px] font-pixel text-[clamp(16px,2.4vw,26px)] leading-[1.7] text-white">
             Take the seat that fits your role at the table.

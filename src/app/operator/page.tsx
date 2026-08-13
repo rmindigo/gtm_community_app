@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function OperatorPage() {
   return (
     <PathLayout
-      badge="P2 — FOR GTM OPERATORS"
+      badge="FOR GTM OPERATORS"
       accent="cyan"
       title={persona.title}
       intro={persona.intro}
@@ -25,7 +25,7 @@ export default function OperatorPage() {
         fields={persona.fields}
         ctaLabel={persona.ctaLabel}
         accent="cyan"
-        formHeader="PARTY UP — ENTER OPERATOR DATA"
+        formHeader="SAY WHAT WORKED"
       />
     </PathLayout>
   );
