@@ -6,7 +6,6 @@ const ctaLinks = {
   founder: "/founder",
   operator: "/operator",
   sponsor: "/sponsor",
-  updates: "/updates",
 };
 
 // Placeholders — edit these two when the first table is set.
@@ -53,12 +52,6 @@ const players = [
     href: ctaLinks.sponsor,
     note: "Cover the table. The dinners, the golf, the rooms.",
     accent: "#ff5db1",
-  },
-  {
-    tag: "KEEP ME POSTED →",
-    href: ctaLinks.updates,
-    note: "Hear when the next Bay Area table opens.",
-    accent: "#46f797",
   },
 ];
 
@@ -232,7 +225,8 @@ export default function Home() {
             <PixelStar /> PICK YOUR SEAT <PixelStar />
           </div>
 
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-[14px]">
+          {/* Three seats stacked, mirroring the three Room Model boxes opposite. */}
+          <div className="grid gap-[14px]">
             {players.map((player) => (
               <a
                 key={player.tag}
@@ -479,9 +473,6 @@ export default function Home() {
             </ArcadeButton>
             <ArcadeButton href={ctaLinks.sponsor} color="#ff5db1">
               SPONSORING
-            </ArcadeButton>
-            <ArcadeButton href={ctaLinks.updates} color="#46f797">
-              KEEP ME POSTED
             </ArcadeButton>
           </div>
         </div>
