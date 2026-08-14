@@ -8,9 +8,12 @@ const ctaLinks = {
   sponsor: "/sponsor",
 };
 
-// Placeholders — edit these two when the first table is set.
-const firstTable = {
-  month: "MARCH",
+// The next table. `month` is intentionally empty until a date is actually set —
+// the line drops it rather than claiming one. Set it to e.g. "MARCH" when the
+// date is real. `seats` is the room size; set to 0 to leave it out too.
+const nextTable = {
+  month: "",
+  city: "SAN FRANCISCO",
   seats: 12,
 };
 
@@ -255,7 +258,10 @@ export default function Home() {
           </div>
 
           <div className="mt-[26px] font-pixel text-[10px] leading-[1.8] tracking-[1px] text-green">
-            NEXT TABLE: {firstTable.month} · SAN FRANCISCO · {firstTable.seats} SEATS
+            NEXT TABLE:{" "}
+            {[nextTable.month, nextTable.city, nextTable.seats ? `${nextTable.seats} SEATS` : ""]
+              .filter(Boolean)
+              .join(" · ")}
           </div>
         </div>
 
