@@ -81,6 +81,18 @@ textarea:focus {
   }
 }
 
+/* Paragraph-length body copy. Monospace needs more air than proportional type —
+   every glyph is the same width, so lines lack the ragged edge the eye tracks
+   with. Looser leading and a shorter measure carry the readability; the font
+   and colours are unchanged. Labels, eyebrows, buttons and any block under two
+   lines keep the default metrics. */
+.prose-mono {
+  font-size: 17px;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+  max-width: 48ch;
+}
+
 /* The pressed-arcade-button move: card shifts into its own shadow. */
 .press {
   transition:

@@ -1,20 +1,12 @@
 import Footer from "./_components/Footer";
 import PixelLogo from "./_components/PixelLogo";
 import PixelStar from "./_components/PixelStar";
+import { nextTableLine } from "@/lib/tableInfo";
 
 const ctaLinks = {
   founder: "/founder",
   operator: "/operator",
   sponsor: "/sponsor",
-};
-
-// The next table. `month` is intentionally empty until a date is actually set —
-// the line drops it rather than claiming one. Set it to e.g. "MARCH" when the
-// date is real. `seats` is the room size; set to 0 to leave it out too.
-const nextTable = {
-  month: "",
-  city: "SAN FRANCISCO",
-  seats: 12,
 };
 
 // The people running the room. Leave `bio` empty and the card renders without
@@ -217,10 +209,10 @@ export default function Home() {
             <Cursor color="#ffd23f" />
           </h1>
 
-          <p className="mt-6 max-w-[56ch] text-lg leading-[1.5] text-body">
+          <p className="prose-mono mt-6 text-body">
             The GTM Table is a dinner. Restaurants around San Francisco and the Bay Area. Founders bring the deal they are trying to close. Operators bring the plays that closed theirs. Nobody performs. Everybody talks.
           </p>
-          <p className="mt-[14px] max-w-[56ch] text-base leading-[1.5] text-muted">
+          <p className="prose-mono mt-[14px] text-muted">
             Founders reserve their seat. Sponsors cover the table. Operators come to talk. The room stays small. The talk stays honest.
           </p>
 
@@ -258,10 +250,7 @@ export default function Home() {
           </div>
 
           <div className="mt-[26px] font-pixel text-[10px] leading-[1.8] tracking-[1px] text-green">
-            NEXT TABLE:{" "}
-            {[nextTable.month, nextTable.city, nextTable.seats ? `${nextTable.seats} SEATS` : ""]
-              .filter(Boolean)
-              .join(" · ")}
+            {nextTableLine()}
           </div>
         </div>
 
@@ -373,7 +362,7 @@ export default function Home() {
                 className="border-[3px] border-edge bg-panel p-[18px] shadow-[5px_5px_0_#000]"
               >
                 <div className={`font-pixel text-[10px] leading-[1.6] ${format.accent}`}>{format.title}</div>
-                <p className="mt-2 text-base leading-[1.4] text-body">{format.body}</p>
+                <p className="prose-mono mt-2 text-body">{format.body}</p>
               </div>
             ))}
           </div>
@@ -389,7 +378,7 @@ export default function Home() {
           <h2 className="mb-3 mt-[18px] font-pixel text-[clamp(16px,2.2vw,24px)] leading-[1.7] text-white">
             Cover the room where the deals get talked about.
           </h2>
-          <p className="text-[17px] leading-[1.45] text-muted">
+          <p className="prose-mono text-muted">
             Sponsors cover the dinners, the golf, and the rooms that bring founders and operators together. They get proximity and trust. Not a booth. Not a lead list.
           </p>
         </div>
@@ -441,7 +430,7 @@ export default function Home() {
                 </div>
               </div>
               {host.bio ? (
-                <p className="text-base leading-[1.45] text-body">{host.bio}</p>
+                <p className="prose-mono text-body">{host.bio}</p>
               ) : null}
             </div>
           ))}
