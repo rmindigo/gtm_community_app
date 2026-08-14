@@ -126,15 +126,30 @@ export async function subscribe(
   // just adds the contact directly.
   {
     const [firstName, ...rest] = name ? name.split(" ") : [];
+    const base = {
+      email,
+      firstName: firstName || undefined,
+      lastName: rest.join(" ") || undefined,
+      unsubscribed: false,
+      ...(segmentId ? { segments: [{ id: segmentId }] } : {}),
+    };
+
     try {
-      await resend.contacts.create({
-        email,
-        firstName: firstName || undefined,
-        lastName: rest.join(" ") || undefined,
-        unsubscribed: false,
+      const withProps = await resend.contacts.create({
+        ...base,
         properties: { persona: persona.key, ...properties },
-        ...(segmentId ? { segments: [{ id: segmentId }] } : {}),
       });
+
+      // Resend rejects the whole contact if a property has not been declared
+      // in the dashboard first ("One or more properties do not exist"). Losing
+      // the contact is worse than losing the metadata, so retry bare.
+      if (withProps.error) {
+        console.error(`[subscribe] properties rejected for ${persona.key}:`, withProps.error);
+        const bare = await resend.contacts.create(base);
+        if (bare.error) {
+          console.error(`[subscribe] contact not stored for ${persona.key}:`, bare.error);
+        }
+      }
     } catch (error) {
       console.error(`[subscribe] contact not stored for ${persona.key}:`, error);
     }
