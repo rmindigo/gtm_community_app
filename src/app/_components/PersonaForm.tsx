@@ -60,7 +60,7 @@ export default function PersonaForm({
   fields: Field[];
   ctaLabel: string;
   accent: AccentName;
-  // e.g. "BRING THE DEAL"
+  // e.g. "BRING YOUR QUESTIONS"
   formHeader: string;
 }) {
   const [state, formAction, pending] = useActionState(subscribe, initialState);

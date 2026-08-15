@@ -3,6 +3,7 @@ import Footer from "./Footer";
 import PixelLogo from "./PixelLogo";
 import Hosts from "./Hosts";
 import PersonaForm from "./PersonaForm";
+import RoomModelStrip from "./RoomModelStrip";
 import { ACCENTS } from "@/lib/theme";
 import { nextTableLine } from "@/lib/tableInfo";
 import type { Persona } from "@/lib/personas";
@@ -41,28 +42,59 @@ export default function PersonaPage({ persona }: { persona: Persona }) {
           />
         </h1>
 
-        {persona.landing.pitch.map((para, i) => (
-          <p key={para} className={`prose-mono ${i === 0 ? "mt-[22px] text-body" : "mt-4 text-muted"}`}>
-            {para}
-          </p>
-        ))}
+        {/* Lead paragraph, then the rest inside a panel so the page is not an
+            unbroken column of prose. */}
+        <p className="prose-mono mt-[22px] text-body">{persona.landing.pitch[0]}</p>
 
-        <div className="mt-8 grid gap-[10px] text-base leading-[1.4] text-body">
-          {persona.points.map((point) => (
-            <div key={point} className="flex gap-[10px]">
-              <span style={{ color }}>▶</span>
-              {point}
-            </div>
+        <div className="mt-7 border-[3px] border-edge bg-panel p-7 shadow-[8px_8px_0_#000]">
+          {persona.landing.pitch.slice(1).map((para, i) => (
+            <p key={para} className={`prose-mono text-muted ${i === 0 ? "" : "mt-4"}`}>
+              {para}
+            </p>
           ))}
         </div>
 
-        <p className="mt-8 border-l-[3px] border-edge pl-4 text-[15px] leading-[1.6] text-muted">
-          {persona.landing.otherRoles}
-        </p>
+        {/* Bullets in an accent-bordered panel, matching "Why sponsors come"
+            on the homepage. */}
+        <div
+          className="mt-6 border-[3px] bg-panel p-7 shadow-[8px_8px_0_#000]"
+          style={{ borderColor: color }}
+        >
+          <h2 className="mb-[18px] font-pixel text-[13px] leading-[1.7] text-white">
+            {persona.landing.pointsHeading}
+          </h2>
+          <div className="grid gap-[10px] text-base leading-[1.4] text-body">
+            {persona.points.map((point) => (
+              <div key={point} className="flex gap-[10px]">
+                <span style={{ color }}>▶</span>
+                {point}
+              </div>
+            ))}
+          </div>
+        </div>
 
-        <Hosts className="mt-[72px]" />
+        {/* The room, with the reader's own row lit. Replaces a plain sentence
+            about the other two roles. */}
+        <div className="mt-[52px] font-pixel text-[10px] tracking-[2px] text-cyan">THE ROOM</div>
+        <div className="mt-[18px]">
+          <RoomModelStrip current={persona.key} />
+        </div>
+        <p className="mt-4 text-[15px] leading-[1.6] text-muted">{persona.landing.otherRoles}</p>
 
-        <div className="mt-[72px] font-pixel text-[10px] leading-[1.8] tracking-[1px] text-green">
+        <Hosts className="mt-[52px]" />
+
+        <div className="mt-[52px] flex items-center border-[3px] border-edge-dim bg-band p-7 shadow-[8px_8px_0_#000]">
+          <p className="font-pixel text-[clamp(11px,1.5vw,14px)] leading-[2] text-green">
+            &gt; {persona.landing.terminal}
+            <span
+              data-blink
+              className="ml-2 inline-block h-[0.9em] w-[0.5em] align-[-0.1em] bg-green"
+              style={{ animation: "blink 1s steps(1) infinite" }}
+            />
+          </p>
+        </div>
+
+        <div className="mt-[52px] font-pixel text-[10px] leading-[1.8] tracking-[1px] text-green">
           {nextTableLine()}
         </div>
 

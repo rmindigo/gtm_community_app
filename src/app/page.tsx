@@ -3,6 +3,8 @@ import PixelLogo from "./_components/PixelLogo";
 import PixelStar from "./_components/PixelStar";
 import Hosts from "./_components/Hosts";
 import { nextTableLine } from "@/lib/tableInfo";
+import { roomModel } from "@/lib/roomModel";
+import { ACCENTS } from "@/lib/theme";
 
 const ctaLinks = {
   founder: "/founder",
@@ -14,7 +16,7 @@ const players = [
   {
     tag: "FOUNDER →",
     href: ctaLinks.founder,
-    note: "Sit with operators who have closed the deal you are working.",
+    note: "Sit with operators who have already answered the questions you are working.",
     accent: "#ffd23f",
     solid: true,
   },
@@ -32,38 +34,20 @@ const players = [
   },
 ];
 
-const roomStandards = [
-  {
-    label: "FOUNDERS RESERVE THE SEAT",
-    body: "They bring the deal to the table. The stalled pipe, the first enterprise logo, the price nobody will sign.",
-    accent: "text-gold",
-  },
-  {
-    label: "OPERATORS BRING THE PLAYS",
-    body: "They have sold into the account, expanded it, lost it, and won the next one. They say what worked.",
-    accent: "text-cyan",
-  },
-  {
-    label: "SPONSORS COVER THE ROOM",
-    body: "They take care of the dinner and the golf. They host, and they listen.",
-    accent: "text-magenta",
-  },
-];
-
 const steps = [
   {
     title: "Build the table",
-    body: "Each table holds a few founders, a few operators, and one enterprise problem to work.",
+    body: "Each table holds a few founders, a few operators, and the GTM questions they came with.",
     chip: "#ffd23f",
   },
   {
     title: "Set the question",
-    body: "The question is narrow. Open the first enterprise account. Fix the stalled pipe. Hire the first VP of Sales. Run the partner motion.",
+    body: "The questions stay narrow. Build the outbound motion. Open the first enterprise account. Hire the first VP of Sales. Price the next tier.",
     chip: "#52d8ff",
   },
   {
     title: "Trade the plays",
-    body: "Operators say what worked in the field. Founders bring the mess behind the deal.",
+    body: "Operators say what worked in the field. Founders bring the mess behind the question.",
     chip: "#46f797",
   },
   {
@@ -76,7 +60,7 @@ const steps = [
 const founderReasons = [
   "Test the GTM call before it costs the quarter.",
   "Hear from operators who carried the number and ran the team.",
-  "Talk through the buyer, the deal, the hire, the price, the next segment.",
+  "Talk through pipeline and outbound, the buyer, the price, the hire, the next segment.",
 ];
 
 const operatorReasons = [
@@ -88,7 +72,7 @@ const operatorReasons = [
 const eventFormats = [
   {
     title: "Founder advisory dinners",
-    body: "A few founders. A few operators. One deal to work. Dinner on the table.",
+    body: "A few founders. A few operators. A few questions to work. Dinner on the table.",
     accent: "text-gold",
   },
   {
@@ -192,7 +176,7 @@ export default function Home() {
           </h1>
 
           <p className="prose-mono mt-6 text-body">
-            The GTM Table is a dinner. Restaurants around San Francisco and the Bay Area. Founders bring the deal they are trying to close. Operators bring the plays that closed theirs. Everybody talks.
+            The GTM Table is a dinner. Restaurants around San Francisco and the Bay Area. Founders bring the GTM questions they are working. Operators bring the plays that answered theirs. Everybody talks.
           </p>
           <p className="prose-mono mt-[14px] text-muted">
             Founders reserve their seat. Sponsors cover the table. Operators come to talk. The room stays small. The talk stays honest.
@@ -242,10 +226,15 @@ export default function Home() {
             Who sits. Who talks. Who hosts.
           </h2>
           <div className="grid gap-[14px]">
-            {roomStandards.map((item) => (
-              <div key={item.label} className="border-[3px] border-edge-dim bg-band p-4">
-                <div className={`font-pixel text-[10px] leading-[1.7] ${item.accent}`}>{item.label}</div>
-                <p className="mt-2 text-base leading-[1.4] text-body">{item.body}</p>
+            {roomModel.map((role) => (
+              <div key={role.key} className="border-[3px] border-edge-dim bg-band p-4">
+                <div
+                  className="font-pixel text-[10px] leading-[1.7]"
+                  style={{ color: ACCENTS[role.accent] }}
+                >
+                  {role.label}
+                </div>
+                <p className="mt-2 text-base leading-[1.4] text-body">{role.body}</p>
               </div>
             ))}
           </div>

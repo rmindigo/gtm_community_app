@@ -20,9 +20,7 @@ export type PersonaKey = "founder" | "operator" | "sponsor";
 
 export type Persona = {
   key: PersonaKey;
-  eyebrow: string;
   title: string;
-  intro: string;
   points: string[];
   ctaLabel: string;
   accent: AccentName;
@@ -35,6 +33,10 @@ export type Persona = {
   landing: {
     heroTitle: string;
     pitch: string[];
+    // Heading on the bordered panel holding the bullet list.
+    pointsHeading: string;
+    // Terminal-style closing line above the form.
+    terminal: string;
     // One line placing the other two roles. No CTAs — the page has one job.
     otherRoles: string;
   };
@@ -50,26 +52,25 @@ const bayAreaOptions = ["Yes, SF / Bay Area", "Sometimes", "No"];
 export const PERSONAS: Record<PersonaKey, Persona> = {
   founder: {
     key: "founder",
-    eyebrow: "For founders",
-    title: "Bring the deal. Leave with the play.",
-    intro:
-      "You are selling into the enterprise. The pipe is stalled, the logo will not sign, the hire is not made. Sit down with operators who have worked the same ground and closed it.",
+    title: "Bring your GTM questions. Leave with the plays.",
     points: [
       "Test the GTM call before it costs the quarter.",
       "Hear from operators who carried the number and ran the team.",
-      "Talk through the buyer, the deal, the hire, the price, the next segment.",
+      "Talk through pipeline and outbound, the buyer, the price, the hire, the next segment.",
     ],
     ctaLabel: "Request a seat",
     accent: "gold",
     badge: "FOR FOUNDERS",
-    formHeader: "BRING THE DEAL",
+    formHeader: "BRING YOUR QUESTIONS",
     landing: {
       heroTitle: "Get the operator's read before the mistake compounds.",
       pitch: [
-        "You are selling into the enterprise. The pipe is stalled, the logo will not sign, the hire is not made. Sit down with operators who have worked the same ground and closed it.",
-        "Founders come for operators who know the difference between a good story and a deal that closes. You bring the deal you are actually working — the stalled pipe, the first enterprise logo, the price nobody will sign — and the table works it with you.",
-        "Each table holds a few founders, a few operators, and one enterprise problem. The question stays narrow enough to answer over dinner.",
+        "You are selling into the enterprise. Outbound is not landing, the pipe is thin, the logo will not sign, the hire is not made. Sit down with operators who have worked the same ground.",
+        "Founders come for operators who know the difference between a good story and a motion that works. Bring a few GTM questions you are actually stuck on — pipeline, outbound, pricing, the buyer, the hire — and the table works them with you.",
+        "Each table holds a few founders and a few operators. The questions stay narrow enough to answer over dinner.",
       ],
+      pointsHeading: "What you leave with",
+      terminal: "Bring the questions you are actually stuck on. The table works them with you.",
       otherRoles:
         "Operators at the table have carried the number. Sponsors cover the room and stay out of the way.",
     },
@@ -80,7 +81,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       { name: "company", label: "Company + website", type: "text", required: true },
       {
         name: "problem",
-        label: "What is the GTM problem on your desk right now?",
+        label: "What GTM questions are on your desk right now?",
         type: "textarea",
         required: true,
       },
@@ -107,18 +108,15 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       subject: "Your seat request — The GTM Table",
       heading: "You asked for a seat.",
       body: [
-        "We read every one. If the table fits the deal you are working, you hear from us.",
-        "Bring the problem. Operators bring the play.",
+        "We read every one. If the table fits the questions you are working, you hear from us.",
+        "Bring the questions. Operators bring the plays.",
       ],
     },
   },
 
   operator: {
     key: "operator",
-    eyebrow: "For GTM operators",
     title: "Sit at the table. Say what worked.",
-    intro:
-      "You carried the number. You ran the team. Trade notes with operators who did the same, and meet founders working the problems you have already solved.",
     points: [
       "Sit with operators who have done the work. Everyone at the table talks.",
       "Meet founders working real enterprise problems.",
@@ -135,8 +133,10 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
         "Operators come for the peers, the dinners, the golf, and founders worth the time. You say what worked in the field — the account you expanded, the one you lost, the motion you would run again.",
         "Dinners and golf across the Bay Area. Small rooms, and everyone at the table talks.",
       ],
+      pointsHeading: "Why operators come",
+      terminal: "You carried the number. Say what worked, and hear what did not.",
       otherRoles:
-        "Founders bring the deal they are trying to close. Sponsors cover the room and stay out of the way.",
+        "Founders bring the GTM questions they are working. Sponsors cover the room and stay out of the way.",
     },
     segmentEnv: "RESEND_SEGMENT_OPERATOR",
     fields: [
@@ -184,10 +184,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
 
   sponsor: {
     key: "sponsor",
-    eyebrow: "Sponsors",
     title: "Cover the room. Earn the trust.",
-    intro:
-      "Cover the dinner and the golf. Sit near the founders and operators while the deal is still being worked. Host the room and listen.",
     points: [
       "A seat near the founders and operators in the room.",
       "Time with the deal before it becomes a vendor list.",
@@ -205,8 +202,10 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
         "One sponsor per dinner. You cover the room and you sit in it. The founders and operators at the table decide whether you earned the next conversation.",
         "A sponsor has to fit the people at the table. The room stays small, and operators run it.",
       ],
+      pointsHeading: "Why sponsors come",
+      terminal: "Cover the room. Sit in it. Earn the next conversation.",
       otherRoles:
-        "Founders bring the deal. Operators bring the plays that closed theirs.",
+        "Founders bring the GTM questions they are working. Operators bring the plays that answered theirs.",
     },
     segmentEnv: "RESEND_SEGMENT_SPONSOR",
     fields: [

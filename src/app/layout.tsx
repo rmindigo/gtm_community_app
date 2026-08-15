@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://gtmers.co"),
   title: "The GTM Table | Enterprise GTM dinners",
   description:
-    "A dinner in the Bay Area. Founders bring the deal. Operators bring the play. Straight talk on enterprise GTM.",
+    "A dinner in the Bay Area. Founders bring their GTM questions. Operators bring the plays. Straight talk on enterprise GTM.",
 };
 
 export default function RootLayout({
