@@ -1,6 +1,7 @@
 import Footer from "./_components/Footer";
 import PixelLogo from "./_components/PixelLogo";
 import PixelStar from "./_components/PixelStar";
+import Hosts from "./_components/Hosts";
 import { nextTableLine } from "@/lib/tableInfo";
 
 const ctaLinks = {
@@ -8,25 +9,6 @@ const ctaLinks = {
   operator: "/operator",
   sponsor: "/sponsor",
 };
-
-// The people running the room. Leave `bio` empty and the card renders without
-// a paragraph — no placeholder copy goes live by accident.
-const hosts = [
-  {
-    name: "Ryan Mindigo",
-    initials: "RM",
-    linkedin: "https://www.linkedin.com/in/rmindigo/",
-    accent: "#ffd23f",
-    bio: "Ryan has spent 16 years in enterprise GTM, most recently on the founding team at Brief and before that at BrowserStack, where he scaled the West Coast enterprise team from one AE to ten and landed Google, Wells Fargo, Oracle, and HSBC. A 2x founder and early Yammer alum, he puts founders across the table from operators who have run the play.",
-  },
-  {
-    name: "Danny Varty",
-    initials: "DV",
-    linkedin: "https://www.linkedin.com/in/danny-varty-9a9aa115/",
-    accent: "#52d8ff",
-    bio: "Danny has spent 15 years selling into the enterprise, most recently as founding sales leader at Ragie and before that at Iterable, Meta, and Microsoft, where he carried the $80M Office 365 number across the West Coast. He has opened the first enterprise accounts at startups and closed the largest ones at scale.",
-  },
-];
 
 const players = [
   {
@@ -405,36 +387,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="hosts" className="mx-auto max-w-[1140px] px-6 pb-[72px]">
-        <Eyebrow className="text-cyan">WHO RUNS THE TABLE</Eyebrow>
-
-        <div className="mt-[18px] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-stretch gap-6">
-          {hosts.map((host) => (
-            <div
-              key={host.name}
-              className="border-[3px] border-edge bg-panel p-7 shadow-[8px_8px_0_#000]"
-            >
-              <div className="mb-4 flex items-center gap-4">
-                {/* Headshot placeholder — swap for <Image src="/…" .../> when photos are ready. */}
-                <div
-                  className="flex h-[52px] w-[52px] flex-none items-center justify-center border-[3px] border-black font-pixel text-xs text-void"
-                  style={{ background: host.accent }}
-                >
-                  {host.initials}
-                </div>
-                <div>
-                  <div className="font-pixel text-[13px] leading-[1.6] text-white">{host.name}</div>
-                  <a href={host.linkedin} target="_blank" rel="noreferrer" className="text-[15px]">
-                    LinkedIn →
-                  </a>
-                </div>
-              </div>
-              {host.bio ? (
-                <p className="prose-mono text-body">{host.bio}</p>
-              ) : null}
-            </div>
-          ))}
-        </div>
+      <div className="mx-auto max-w-[1140px] px-6 pb-[72px]">
+        <Hosts />
 
         <div className="mt-6 flex items-center border-[3px] border-edge-dim bg-band p-7 shadow-[8px_8px_0_#000]">
           <p className="font-pixel text-[clamp(12px,1.6vw,15px)] leading-[2] text-green">
@@ -442,7 +396,7 @@ export default function Home() {
             <Cursor color="#46f797" />
           </p>
         </div>
-      </section>
+      </div>
 
       <section id="cta" className="border-t-[3px] border-edge-dim bg-band">
         <div className="mx-auto max-w-[820px] px-6 py-20 text-center">
