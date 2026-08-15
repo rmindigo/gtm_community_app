@@ -26,6 +26,12 @@ export default function HostAvatar({ host }: { host: Host }) {
   // is what reads as 8-bit. Grayscale plus a contrast push stands in for a
   // reduced palette, so photos sit inside the existing colour system rather
   // than introducing their own.
+  //
+  // This assumes ordinary photos. If a host supplies art that is *already*
+  // pixelated and palette-reduced, drop the filter and keep only
+  // image-rendering — otherwise grayscale strips colour someone chose on
+  // purpose. Mixed sources look inconsistent side by side, so treat all the
+  // hosts the same way.
   return (
     <div
       className="flex-none overflow-hidden border-[3px] border-black"
