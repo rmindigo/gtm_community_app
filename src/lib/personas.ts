@@ -92,7 +92,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
     intro:
       "You carried the number. You ran the team. Trade notes with operators who did the same, and meet founders working the problems you have already solved.",
     points: [
-      "Sit with operators who have done the work. No panels. No stage.",
+      "Sit with operators who have done the work. Everyone at the table talks.",
       "Meet founders working real enterprise problems.",
       "Come to the dinners and the golf across the Bay Area.",
     ],
@@ -146,7 +146,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
     eyebrow: "Sponsors",
     title: "Cover the room. Earn the trust.",
     intro:
-      "Cover the dinner and the golf. Sit near the founders and operators before the deal becomes a vendor list. Do not pitch across the table.",
+      "Cover the dinner and the golf. Sit near the founders and operators while the deal is still being worked. Host the room and listen.",
     points: [
       "A seat near the founders and operators in the room.",
       "Time with the deal before it becomes a vendor list.",

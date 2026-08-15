@@ -63,8 +63,13 @@ START", "SELECT YOUR PLAYER". It was removed on purpose:
 - Sponsors have to forward these pages to finance.
 
 Copy should read premium, practical, curated, operator-led. Avoid generic
-networking, community, course, or webinar language. The hero promises "Nobody
-performs. Everybody talks." — keep the words consistent with that.
+networking, community, course, or webinar language.
+
+**Say what a thing is, never what it is not.** No "not a booth", "no panels,
+no stage", "no portal, no feed", "they do not pitch". Every one of those was
+removed on purpose — defining by negation puts the reader's attention on the
+thing you are disowning. Write the positive version instead: "they host, and
+they listen", "everyone at the table talks".
 
 ## Email
 

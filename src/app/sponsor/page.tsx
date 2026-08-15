@@ -8,7 +8,7 @@ const persona = PERSONAS.sponsor;
 export const metadata: Metadata = {
   title: "Sponsors | The GTM Table",
   description:
-    "Cover the dinners and the golf that bring founders and operators together. Proximity and trust, not a booth.",
+    "Cover the dinners and the golf that bring founders and operators together. Proximity and trust with the people who sign.",
 };
 
 export default function SponsorPage() {

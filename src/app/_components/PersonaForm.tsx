@@ -115,7 +115,7 @@ export default function PersonaForm({
         >
           {pending ? "SENDING…" : `${ctaLabel.toUpperCase()} →`}
         </button>
-        <p className="mt-4 text-[15px] text-muted">We keep the list short. No spam, no sharing.</p>
+        <p className="mt-4 text-[15px] text-muted">We keep the list short and private.</p>
       </div>
     </form>
   );

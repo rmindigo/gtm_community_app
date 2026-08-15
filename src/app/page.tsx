@@ -63,7 +63,7 @@ const roomStandards = [
   },
   {
     label: "SPONSORS COVER THE ROOM",
-    body: "They take care of the dinner and the golf. They do not pitch across the table.",
+    body: "They take care of the dinner and the golf. They host, and they listen.",
     accent: "text-magenta",
   },
 ];
@@ -86,7 +86,7 @@ const steps = [
   },
   {
     title: "Keep it light",
-    body: "No portal. No feed. A follow-up, an introduction, and the next table when it earns the time.",
+    body: "A follow-up, an introduction, and the next table when it earns the time.",
     chip: "#ff5db1",
   },
 ];
@@ -98,7 +98,7 @@ const founderReasons = [
 ];
 
 const operatorReasons = [
-  "Sit with operators who have done the work. No panels. No stage.",
+  "Sit with operators who have done the work. Everyone at the table talks.",
   "Meet founders working real enterprise problems.",
   "Come to the dinners and the golf across the Bay Area.",
 ];
@@ -121,7 +121,7 @@ const eventFormats = [
   },
   {
     title: "Sponsor-hosted tables",
-    body: "A room a sponsor covers. They host. They do not pitch.",
+    body: "A room a sponsor covers. They host, and they listen.",
     accent: "text-magenta",
   },
 ];
@@ -210,7 +210,7 @@ export default function Home() {
           </h1>
 
           <p className="prose-mono mt-6 text-body">
-            The GTM Table is a dinner. Restaurants around San Francisco and the Bay Area. Founders bring the deal they are trying to close. Operators bring the plays that closed theirs. Nobody performs. Everybody talks.
+            The GTM Table is a dinner. Restaurants around San Francisco and the Bay Area. Founders bring the deal they are trying to close. Operators bring the plays that closed theirs. Everybody talks.
           </p>
           <p className="prose-mono mt-[14px] text-muted">
             Founders reserve their seat. Sponsors cover the table. Operators come to talk. The room stays small. The talk stays honest.
@@ -379,7 +379,7 @@ export default function Home() {
             Cover the room where the deals get talked about.
           </h2>
           <p className="prose-mono text-muted">
-            Sponsors cover the dinners, the golf, and the rooms that bring founders and operators together. They get proximity and trust. Not a booth. Not a lead list.
+            Sponsors cover the dinners, the golf, and the rooms that bring founders and operators together. They get proximity and trust.
           </p>
         </div>
         <div className="border-[3px] border-magenta bg-panel p-7 shadow-[8px_8px_0_#000]">
