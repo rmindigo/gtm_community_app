@@ -1,3 +1,5 @@
+import type { AccentName } from "./theme";
+
 // Shared, secret-free config for the three intake personas.
 // Field definitions render the forms (client) and drive validation + the
 // confirmation email (server). Actual Resend keys/audience IDs live in env,
@@ -23,6 +25,19 @@ export type Persona = {
   intro: string;
   points: string[];
   ctaLabel: string;
+  accent: AccentName;
+  // Badge above the headline, e.g. "FOR FOUNDERS".
+  badge: string;
+  // Header line inside the form panel.
+  formHeader: string;
+  // Landing-page content. `heroTitle` deliberately reuses the homepage section
+  // headline so someone arriving from the seat picker lands on the same promise.
+  landing: {
+    heroTitle: string;
+    pitch: string[];
+    // One line placing the other two roles. No CTAs — the page has one job.
+    otherRoles: string;
+  };
   // Name of the env var holding this persona's Resend segment id.
   segmentEnv: string;
   fields: Field[];
@@ -45,6 +60,19 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       "Talk through the buyer, the deal, the hire, the price, the next segment.",
     ],
     ctaLabel: "Request a seat",
+    accent: "gold",
+    badge: "FOR FOUNDERS",
+    formHeader: "BRING THE DEAL",
+    landing: {
+      heroTitle: "Get the operator's read before the mistake compounds.",
+      pitch: [
+        "You are selling into the enterprise. The pipe is stalled, the logo will not sign, the hire is not made. Sit down with operators who have worked the same ground and closed it.",
+        "Founders come for operators who know the difference between a good story and a deal that closes. You bring the deal you are actually working — the stalled pipe, the first enterprise logo, the price nobody will sign — and the table works it with you.",
+        "Each table holds a few founders, a few operators, and one enterprise problem. The question stays narrow enough to answer over dinner.",
+      ],
+      otherRoles:
+        "Operators at the table have carried the number. Sponsors cover the room and stay out of the way.",
+    },
     segmentEnv: "RESEND_SEGMENT_FOUNDER",
     fields: [
       { name: "name", label: "Name", type: "text", required: true },
@@ -97,6 +125,19 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       "Come to the dinners and the golf across the Bay Area.",
     ],
     ctaLabel: "Join the network",
+    accent: "cyan",
+    badge: "FOR GTM OPERATORS",
+    formHeader: "SAY WHAT WORKED",
+    landing: {
+      heroTitle: "The room runs on operators.",
+      pitch: [
+        "You carried the number. You ran the team. Trade notes with operators who did the same, and meet founders working the problems you have already solved.",
+        "Operators come for the peers, the dinners, the golf, and founders worth the time. You say what worked in the field — the account you expanded, the one you lost, the motion you would run again.",
+        "Dinners and golf across the Bay Area. Small rooms, and everyone at the table talks.",
+      ],
+      otherRoles:
+        "Founders bring the deal they are trying to close. Sponsors cover the room and stay out of the way.",
+    },
     segmentEnv: "RESEND_SEGMENT_OPERATOR",
     fields: [
       { name: "name", label: "Name", type: "text", required: true },
@@ -154,6 +195,19 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       "Time to earn the trust of the people who sign.",
     ],
     ctaLabel: "Start a conversation",
+    accent: "magenta",
+    badge: "SPONSORS",
+    formHeader: "COVER THE ROOM",
+    landing: {
+      heroTitle: "Cover the room where the deals get talked about.",
+      pitch: [
+        "Sponsors cover the dinners, the golf, and the rooms that bring founders and operators together. They get proximity and trust.",
+        "One sponsor per dinner. You cover the room and you sit in it. The founders and operators at the table decide whether you earned the next conversation.",
+        "A sponsor has to fit the people at the table. The room stays small, and operators run it.",
+      ],
+      otherRoles:
+        "Founders bring the deal. Operators bring the plays that closed theirs.",
+    },
     segmentEnv: "RESEND_SEGMENT_SPONSOR",
     fields: [
       { name: "name", label: "Name", type: "text", required: true },

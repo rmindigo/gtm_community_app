@@ -1,27 +1,16 @@
 import Link from "next/link";
 import Footer from "./Footer";
 import PixelLogo from "./PixelLogo";
-import { ACCENTS, type AccentName } from "@/lib/theme";
+import Hosts from "./Hosts";
+import PersonaForm from "./PersonaForm";
+import { ACCENTS } from "@/lib/theme";
+import { nextTableLine } from "@/lib/tableInfo";
+import type { Persona } from "@/lib/personas";
 
-type PathLayoutProps = {
-  title: string;
-  intro: string;
-  points: string[];
-  // Badge above the headline, e.g. "FOR FOUNDERS".
-  badge: string;
-  accent: AccentName;
-  children: React.ReactNode;
-};
-
-export default function PathLayout({
-  title,
-  intro,
-  points,
-  badge,
-  accent,
-  children,
-}: PathLayoutProps) {
-  const color = ACCENTS[accent];
+// One template, three pages. Content and accent come from the persona; the
+// structure is identical so the pages stay in step.
+export default function PersonaPage({ persona }: { persona: Persona }) {
+  const color = ACCENTS[persona.accent];
 
   return (
     <div style={{ "--accent": color } as React.CSSProperties}>
@@ -40,11 +29,11 @@ export default function PathLayout({
           className="inline-block border-[3px] border-black px-3 py-2 font-pixel text-[10px] tracking-[2px] text-void shadow-[4px_4px_0_#000]"
           style={{ background: color }}
         >
-          {badge}
+          {persona.badge}
         </div>
 
         <h1 className="mt-[26px] font-pixel text-[clamp(20px,3.4vw,32px)] leading-[1.6] text-white [text-shadow:4px_4px_0_#2b2b5e]">
-          {title}
+          {persona.landing.heroTitle}
           <span
             data-blink
             className="ml-2 inline-block h-[1em] w-[0.5em] align-[-0.15em]"
@@ -52,10 +41,14 @@ export default function PathLayout({
           />
         </h1>
 
-        <p className="mt-[22px] max-w-[58ch] text-lg leading-[1.5] text-body">{intro}</p>
+        {persona.landing.pitch.map((para, i) => (
+          <p key={para} className={`prose-mono ${i === 0 ? "mt-[22px] text-body" : "mt-4 text-muted"}`}>
+            {para}
+          </p>
+        ))}
 
-        <div className="mt-6 grid gap-[10px] text-base leading-[1.4] text-body">
-          {points.map((point) => (
+        <div className="mt-8 grid gap-[10px] text-base leading-[1.4] text-body">
+          {persona.points.map((point) => (
             <div key={point} className="flex gap-[10px]">
               <span style={{ color }}>▶</span>
               {point}
@@ -63,7 +56,25 @@ export default function PathLayout({
           ))}
         </div>
 
-        <div className="mt-10">{children}</div>
+        <p className="mt-8 border-l-[3px] border-edge pl-4 text-[15px] leading-[1.6] text-muted">
+          {persona.landing.otherRoles}
+        </p>
+
+        <Hosts className="mt-[72px]" />
+
+        <div className="mt-[72px] font-pixel text-[10px] leading-[1.8] tracking-[1px] text-green">
+          {nextTableLine()}
+        </div>
+
+        <div className="mt-6">
+          <PersonaForm
+            persona={persona.key}
+            fields={persona.fields}
+            ctaLabel={persona.ctaLabel}
+            accent={persona.accent}
+            formHeader={persona.formHeader}
+          />
+        </div>
       </main>
 
       <Footer prefix="/" width="max-w-[820px]" tagline="The GTM Table. Bay Area." />
