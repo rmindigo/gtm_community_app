@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import PersonaPage from "../_components/PersonaPage";
 import { PERSONAS } from "@/lib/personas";
+import { personaMetadata } from "@/lib/metadata";
 
 const persona = PERSONAS.founder;
 
-export const metadata: Metadata = {
-  title: "Founders | The GTM Table",
-};
+export const metadata: Metadata = personaMetadata(persona);
 
 export default function Page() {
   return <PersonaPage persona={persona} />;

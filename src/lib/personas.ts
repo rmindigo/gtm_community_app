@@ -40,6 +40,16 @@ export type Persona = {
     // One line placing the other two roles. No CTAs — the page has one job.
     otherRoles: string;
   };
+  // Per-page SEO and link-preview copy. `ogImage` points at a file in
+  // /public that does not exist yet — supply one per persona and the tag
+  // starts resolving. Until then link previews fall back to the site default.
+  meta: {
+    title: string;
+    description: string;
+    ogTitle: string;
+    ogDescription: string;
+    ogImage: string;
+  };
   // Name of the env var holding this persona's Resend segment id.
   segmentEnv: string;
   fields: Field[];
@@ -73,6 +83,15 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       terminal: "Bring the questions you are actually stuck on. The table works them with you.",
       otherRoles:
         "Operators at the table have carried the number. Sponsors cover the room and stay out of the way.",
+    },
+    meta: {
+      title: "For founders | The GTM Table",
+      description:
+        "Bring a few GTM questions — pipeline, outbound, pricing, the buyer, the hire — to a Bay Area dinner with operators who have already answered them.",
+      ogTitle: "Get the operator's read before the mistake compounds.",
+      ogDescription:
+        "A Bay Area dinner for founders selling into the enterprise. Bring the GTM questions you are stuck on. Operators who have run the play work them with you.",
+      ogImage: "/og/founder.png",
     },
     segmentEnv: "RESEND_SEGMENT_FOUNDER",
     fields: [
@@ -137,6 +156,15 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       terminal: "You carried the number. Say what worked, and hear what did not.",
       otherRoles:
         "Founders bring the GTM questions they are working. Sponsors cover the room and stay out of the way.",
+    },
+    meta: {
+      title: "For GTM operators | The GTM Table",
+      description:
+        "Trade notes with operators who have carried the number, and meet founders working the enterprise problems you have already solved. Bay Area dinners and golf.",
+      ogTitle: "The room runs on operators.",
+      ogDescription:
+        "You built the pipe, carried the number, ran the team. Say what worked to founders working the same ground, over dinner in the Bay Area.",
+      ogImage: "/og/operator.png",
     },
     segmentEnv: "RESEND_SEGMENT_OPERATOR",
     fields: [
@@ -206,6 +234,15 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       terminal: "Cover the room. Sit in it. Earn the next conversation.",
       otherRoles:
         "Founders bring the GTM questions they are working. Operators bring the plays that answered theirs.",
+    },
+    meta: {
+      title: "Sponsorship | The GTM Table",
+      description:
+        "One sponsor per dinner. Cover the room where Bay Area founders and enterprise GTM operators talk, and sit at the table with them.",
+      ogTitle: "Cover the room where the deals get talked about.",
+      ogDescription:
+        "One sponsor per dinner. Proximity and trust with the founders and operators who sign, before the deal becomes a vendor list.",
+      ogImage: "/og/sponsor.png",
     },
     segmentEnv: "RESEND_SEGMENT_SPONSOR",
     fields: [
