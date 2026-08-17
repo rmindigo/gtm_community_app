@@ -10,8 +10,8 @@ export const nextTable = {
   seats: 12,
 };
 
-// "NEXT TABLE: MARCH 12 · SAN FRANCISCO · 12 SEATS"
-// "NEXT TABLE: SAN FRANCISCO · 12 SEATS"  (no date set)
+// "NEXT LEVEL: MARCH 12 · SAN FRANCISCO · 12 SEATS"
+// "NEXT LEVEL: SAN FRANCISCO · 12 SEATS"  (no date set)
 export function nextTableLine(): string {
   const parts = [
     nextTable.date,
@@ -19,5 +19,5 @@ export function nextTableLine(): string {
     nextTable.seats ? `${nextTable.seats} SEATS` : "",
   ].filter(Boolean);
 
-  return `NEXT TABLE: ${parts.join(" · ")}`;
+  return `NEXT LEVEL: ${parts.join(" · ")}`;
 }

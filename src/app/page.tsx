@@ -246,7 +246,7 @@ export default function Home() {
         className="mx-auto grid max-w-[1140px] grid-cols-[repeat(auto-fit,minmax(320px,1fr))] items-start gap-11 border-t-[3px] border-edge-dim px-6 py-[72px]"
       >
         <div>
-          <Eyebrow className="text-green">HOW IT WORKS</Eyebrow>
+          <Eyebrow className="text-green">HOW IT WORKS — QUEST LOG</Eyebrow>
           <h2 className="mb-3 mt-[18px] font-pixel text-[clamp(16px,2.2vw,24px)] leading-[1.7] text-white">
             One room. One problem. The people who have solved it.
           </h2>
@@ -318,7 +318,7 @@ export default function Home() {
       <section id="formats" className="border-y-[3px] border-edge-dim bg-band">
         <div className="mx-auto grid max-w-[1140px] grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-start gap-10 px-6 py-16">
           <div>
-            <Eyebrow className="text-green">BAY AREA FIRST</Eyebrow>
+            <Eyebrow className="text-green">BAY AREA FIRST — STAGE SELECT</Eyebrow>
             <h2 className="mb-3 mt-[18px] font-pixel text-[clamp(16px,2.2vw,24px)] leading-[1.7] text-white">
               Trust gets built over dinner, not on a stage.
             </h2>

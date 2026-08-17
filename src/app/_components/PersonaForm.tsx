@@ -69,7 +69,7 @@ export default function PersonaForm({
   if (state.status === "success") {
     return (
       <div className="border-[3px] border-edge bg-panel p-8 text-center shadow-[8px_8px_0_#000]">
-        <p className="font-pixel text-[10px] tracking-[2px] text-green">RECEIVED</p>
+        <p className="font-pixel text-[10px] tracking-[2px] text-green">STAGE CLEARED</p>
         <h2 className="mt-4 font-pixel text-[13px] leading-[1.7] text-white">
           You&apos;re on the list.
         </h2>
@@ -113,7 +113,7 @@ export default function PersonaForm({
           className="press cursor-pointer border-[3px] border-black px-5 py-4 font-pixel text-[11px] text-void shadow-[5px_5px_0_#000] hover:shadow-[2px_2px_0_#000] disabled:cursor-not-allowed disabled:opacity-60"
           style={{ background: color }}
         >
-          {pending ? "SENDING…" : `${ctaLabel.toUpperCase()} →`}
+          {pending ? "LOADING…" : `${ctaLabel.toUpperCase()} →`}
         </button>
         <p className="mt-4 text-[15px] text-muted">We keep the list short and private.</p>
       </div>

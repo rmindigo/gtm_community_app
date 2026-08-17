@@ -48,19 +48,31 @@ The site is an 8-bit CRT arcade design. Recreated from
   No media queries.
 - The CRT scanline overlay is a flag in `src/lib/theme.ts`, off by default.
 
-## Voice — arcade visuals, straight language
+## Voice — arcade flavour on the furniture, straight language on people
 
-This is the distinction to hold onto. The 8-bit **visuals** carry all the
-personality. The **words** stay plain and operator-led.
+The line is **what the words are attached to**, not whether they are game-y.
 
-Do not reintroduce game-mechanic vocabulary. No "INSERT COIN", no player
-numbering (P1/P2/P3), no "GAME OVER", "QUEST LOG", "CO-OP MODE", "PRESS
-START", "SELECT YOUR PLAYER". It was removed on purpose:
+**Arcade language is welcome on sections and system states.** These name
+furniture, not people, and make no claim about the business:
 
-- Numbering ranked operators second behind the paying customer, when they are
-  the scarce side of the marketplace.
-- Coin-op framing sat badly next to a real paid seat.
-- Sponsors have to forward these pages to finance.
+- Section eyebrows — "HOW IT WORKS — QUEST LOG", "BAY AREA FIRST — STAGE
+  SELECT", "GAME MASTERS", "THE ROOM — PARTY ROSTER"
+- The next-table line — "NEXT LEVEL: …"
+- Form and status states — "STAGE CLEARED" on success, "LOADING…" while
+  submitting
+
+**Straight language wherever the words attach to a person or to money.**
+These were removed on purpose and should stay out:
+
+- **Player numbering (P1/P2/P3).** It ranked operators second behind the
+  paying customer, when they are the scarce side of the marketplace.
+- **"INSERT COIN" next to a seat.** Coin-op framing sat badly beside a real
+  paid seat, and sponsors forward these pages to finance. It lives on the 404
+  instead ("INSERT COIN TO CONTINUE"), where nothing is being bought — that is
+  the one place it earns its keep.
+- **Game-jargon form headers.** "ENTER PLAYER DATA" cast a CRO as a player at
+  the moment they typed their real name. Form headers now echo the promise
+  instead: "BRING YOUR QUESTIONS", "SAY WHAT WORKED", "COVER THE ROOM".
 
 Copy should read premium, practical, curated, operator-led. Avoid generic
 networking, community, course, or webinar language.

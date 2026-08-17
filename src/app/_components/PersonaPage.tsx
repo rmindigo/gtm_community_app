@@ -75,7 +75,7 @@ export default function PersonaPage({ persona }: { persona: Persona }) {
 
         {/* The room, with the reader's own row lit. Replaces a plain sentence
             about the other two roles. */}
-        <div className="mt-[52px] font-pixel text-[10px] tracking-[2px] text-cyan">THE ROOM</div>
+        <div className="mt-[52px] font-pixel text-[10px] tracking-[2px] text-cyan">THE ROOM — PARTY ROSTER</div>
         <div className="mt-[18px]">
           <RoomModelStrip current={persona.key} />
         </div>

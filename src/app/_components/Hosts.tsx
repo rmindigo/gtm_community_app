@@ -4,7 +4,7 @@ import { hosts } from "@/lib/hosts";
 // The hosts section. Shared by the homepage and the persona pages, so both
 // stay in step when a bio or a photo changes.
 export default function Hosts({
-  eyebrow = "WHO RUNS THE TABLE",
+  eyebrow = "GAME MASTERS",
   className = "",
 }: {
   eyebrow?: string;
