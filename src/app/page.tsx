@@ -2,6 +2,7 @@ import Footer from "./_components/Footer";
 import PixelLogo from "./_components/PixelLogo";
 import PixelStar from "./_components/PixelStar";
 import Hosts from "./_components/Hosts";
+import FormatIcon from "./_components/FormatIcon";
 import { nextTableLine } from "@/lib/tableInfo";
 import { roomModel } from "@/lib/roomModel";
 import { ACCENTS } from "@/lib/theme";
@@ -72,21 +73,25 @@ const operatorReasons = [
 const eventFormats = [
   {
     title: "Founder advisory dinners",
+    icon: "dinner" as const,
     body: "A few founders. A few operators. A few questions to work. Dinner on the table.",
     accent: "text-gold",
   },
   {
     title: "Operator salons",
+    icon: "salon" as const,
     body: "Field leaders trade notes on how the enterprise buys now.",
     accent: "text-cyan",
   },
   {
     title: "Golf outings",
+    icon: "golf" as const,
     body: "Eighteen holes. Room to talk between shots.",
     accent: "text-green",
   },
   {
     title: "Sponsor-hosted tables",
+    icon: "table" as const,
     body: "A room a sponsor covers. They host, and they listen.",
     accent: "text-magenta",
   },
@@ -332,8 +337,11 @@ export default function Home() {
                 key={format.title}
                 className="border-[3px] border-edge bg-panel p-[18px] shadow-[5px_5px_0_#000]"
               >
-                <div className={`font-pixel text-[10px] leading-[1.6] ${format.accent}`}>{format.title}</div>
-                <p className="prose-mono mt-2 text-body">{format.body}</p>
+                <div className={`flex items-start gap-[10px] ${format.accent}`}>
+                  <FormatIcon name={format.icon} />
+                  <div className="font-pixel text-[10px] leading-[1.6]">{format.title}</div>
+                </div>
+                <p className="prose-mono mt-3 text-body">{format.body}</p>
               </div>
             ))}
           </div>

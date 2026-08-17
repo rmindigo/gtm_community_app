@@ -3,8 +3,10 @@ import type { Persona } from "./personas";
 
 // Builds the per-page metadata from a persona's `meta` block, so the three
 // route files stay identical and the copy lives with the rest of the persona.
+// The og:image itself comes from each route's opengraph-image.tsx, which Next
+// wires up automatically — no path to keep in sync here.
 export function personaMetadata(persona: Persona): Metadata {
-  const { title, description, ogTitle, ogDescription, ogImage } = persona.meta;
+  const { title, description, ogTitle, ogDescription } = persona.meta;
   const url = `/${persona.key}`;
 
   return {
@@ -17,13 +19,11 @@ export function personaMetadata(persona: Persona): Metadata {
       url,
       title: ogTitle,
       description: ogDescription,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: ogTitle }],
     },
     twitter: {
       card: "summary_large_image",
       title: ogTitle,
       description: ogDescription,
-      images: [ogImage],
     },
   };
 }

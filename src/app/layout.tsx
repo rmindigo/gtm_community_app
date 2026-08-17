@@ -29,14 +29,11 @@ export const metadata: Metadata = {
     url: "/",
     title: "Founders and operators. One table.",
     description: DESCRIPTION,
-    // Supply /public/og/home.png (1200×630) and previews start using it.
-    images: [{ url: "/og/home.png", width: 1200, height: 630, alt: "The GTM Table" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Founders and operators. One table.",
     description: DESCRIPTION,
-    images: ["/og/home.png"],
   },
 };
 
