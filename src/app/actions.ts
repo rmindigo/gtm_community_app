@@ -97,7 +97,14 @@ export async function subscribe(
 
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.RESEND_FROM;
-  const segmentId = process.env[persona.segmentEnv];
+  // Trimmed and shape-checked: a stray space or newline pasted into the env
+  // var makes Resend reject the whole contact with a 422, which would cost us
+  // the lead entirely. An unusable id is better ignored than sent.
+  const rawSegmentId = process.env[persona.segmentEnv]?.trim();
+  const segmentId = /^[0-9a-f-]{36}$/i.test(rawSegmentId ?? "") ? rawSegmentId : undefined;
+  if (rawSegmentId && !segmentId) {
+    console.error(`[subscribe] ${persona.segmentEnv} is not a valid uuid; skipping segment`);
+  }
   const notifyTo = process.env.RESEND_NOTIFY_TO;
   // RESEND_FROM only has to live on the verified domain — no mailbox needed.
   // Replies go here instead, so they reach a real inbox. Falls back to the
