@@ -160,7 +160,10 @@ export default function Home() {
           <PixelLogo />
           <div className="font-pixel text-xs tracking-[2px] text-white">THE GTM TABLE</div>
         </div>
-        <nav className="flex flex-wrap gap-[22px] text-base">
+        {/* Anchor links to sections the reader scrolls past anyway. On a phone the
+            row wraps to two lines and pushes the seat picker below the fold, so it
+            starts at sm. The footer carries the same four links. */}
+        <nav className="hidden flex-wrap gap-[22px] text-base sm:flex">
           <a href="#how">How it works</a>
           <a href="#formats">Formats</a>
           <a href="#sponsors">Sponsors</a>
@@ -174,7 +177,7 @@ export default function Home() {
             BAY AREA FIRST — ENTERPRISE GTM
           </div>
 
-          <h1 className="mt-7 font-pixel text-[clamp(22px,3.4vw,40px)] leading-[1.5] text-white [text-shadow:4px_4px_0_#2b2b5e]">
+          <h1 className="mt-6 font-pixel text-[clamp(22px,3.4vw,40px)] leading-[1.35] text-white [text-shadow:4px_4px_0_#2b2b5e]">
             Founders and operators. One table. Straight talk on enterprise deals.
             <Cursor color="#ffd23f" />
           </h1>
@@ -182,11 +185,8 @@ export default function Home() {
           <p className="prose-mono mt-6 text-body">
             The GTM Table is a dinner. Restaurants around San Francisco and the Bay Area. Founders bring the GTM questions they are working. Operators bring the plays that answered theirs. Everybody talks.
           </p>
-          <p className="prose-mono mt-[14px] text-muted">
-            Founders reserve their seat. Sponsors cover the table. Operators come to talk. The room stays small. The talk stays honest.
-          </p>
 
-          <div className="mb-[14px] mt-[34px] flex items-center gap-2 font-pixel text-[10px] tracking-[1px] text-gold">
+          <div className="mb-[14px] mt-7 flex items-center gap-2 font-pixel text-[10px] tracking-[1px] text-gold">
             <PixelStar /> PICK YOUR SEAT <PixelStar />
           </div>
 
