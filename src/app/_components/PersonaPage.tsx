@@ -46,6 +46,18 @@ export default function PersonaPage({ persona }: { persona: Persona }) {
             unbroken column of prose. */}
         <p className="prose-mono mt-[22px] text-body">{persona.landing.pitch[0]}</p>
 
+        {/* The form sits ~5 screens down on a phone. This puts the action in
+            reach immediately without moving it. */}
+        <a
+          href="#apply"
+          className="press mt-7 inline-block border-[3px] border-black px-[18px] py-[14px] font-pixel text-[10px] shadow-[5px_5px_0_#000] hover:shadow-[2px_2px_0_#000]"
+          // Colour inline: globals.css sets `a { color: gold }` outside any
+          // layer, which beats Tailwind utilities on <a> elements.
+          style={{ background: color, color: "#0a0a14" }}
+        >
+          {persona.ctaLabel.toUpperCase()} ↓
+        </a>
+
         <div className="mt-7 border-[3px] border-edge bg-panel p-7 shadow-[8px_8px_0_#000]">
           {persona.landing.pitch.slice(1).map((para, i) => (
             <p key={para} className={`prose-mono text-muted ${i === 0 ? "" : "mt-4"}`}>
@@ -121,7 +133,7 @@ export default function PersonaPage({ persona }: { persona: Persona }) {
           </p>
         ) : null}
 
-        <div className="mt-6">
+        <div id="apply" className="mt-6 scroll-mt-6">
           <PersonaForm
             persona={persona.key}
             fields={persona.fields}
