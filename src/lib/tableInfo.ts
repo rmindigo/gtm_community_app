@@ -10,6 +10,13 @@ export const nextTable = {
   seats: 12,
 };
 
+// Standing facts about how the series runs, as opposed to the next specific
+// table. Kept on their own line so neither has to carry four facts at once.
+export const cadence = {
+  frequency: "MONTHLY",
+  access: "INVITE ONLY",
+};
+
 // "NEXT LEVEL: MARCH 12 · SAN FRANCISCO · 12 SEATS"
 // "NEXT LEVEL: SAN FRANCISCO · 12 SEATS"  (no date set)
 export function nextTableLine(): string {
@@ -20,4 +27,9 @@ export function nextTableLine(): string {
   ].filter(Boolean);
 
   return `NEXT LEVEL: ${parts.join(" · ")}`;
+}
+
+// "MONTHLY · INVITE ONLY"
+export function cadenceLine(): string {
+  return [cadence.frequency, cadence.access].filter(Boolean).join(" · ");
 }

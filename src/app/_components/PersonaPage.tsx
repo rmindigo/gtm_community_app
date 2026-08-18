@@ -5,7 +5,7 @@ import Hosts from "./Hosts";
 import PersonaForm from "./PersonaForm";
 import RoomModelStrip from "./RoomModelStrip";
 import { ACCENTS } from "@/lib/theme";
-import { nextTableLine } from "@/lib/tableInfo";
+import { nextTableLine, cadenceLine } from "@/lib/tableInfo";
 import type { Persona } from "@/lib/personas";
 
 // One template, three pages. Content and accent come from the persona; the
@@ -96,6 +96,9 @@ export default function PersonaPage({ persona }: { persona: Persona }) {
 
         <div className="mt-[52px] font-pixel text-[10px] leading-[1.8] tracking-[1px] text-green">
           {nextTableLine()}
+        </div>
+        <div className="mt-2 font-pixel text-[10px] leading-[1.8] tracking-[1px] text-muted">
+          {cadenceLine()}
         </div>
 
         <div className="mt-6">

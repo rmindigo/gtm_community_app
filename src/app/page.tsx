@@ -2,7 +2,7 @@ import Footer from "./_components/Footer";
 import PixelLogo from "./_components/PixelLogo";
 import PixelStar from "./_components/PixelStar";
 import Hosts from "./_components/Hosts";
-import { nextTableLine } from "@/lib/tableInfo";
+import { nextTableLine, cadenceLine } from "@/lib/tableInfo";
 import { roomModel } from "@/lib/roomModel";
 import { ACCENTS } from "@/lib/theme";
 
@@ -221,6 +221,9 @@ export default function Home() {
 
           <div className="mt-[26px] font-pixel text-[10px] leading-[1.8] tracking-[1px] text-green">
             {nextTableLine()}
+          </div>
+          <div className="mt-2 font-pixel text-[10px] leading-[1.8] tracking-[1px] text-muted">
+            {cadenceLine()}
           </div>
         </div>
 
