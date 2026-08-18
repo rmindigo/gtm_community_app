@@ -88,7 +88,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       bestFit:
         "B2B founders selling $25k+ ACV into mid-market or enterprise accounts.",
       otherRoles:
-        "Operators at the table have carried the number. Sponsors cover the room and stay out of the way.",
+        "Operators at the table have carried the number. Sponsors cover the room and take a few minutes at the top.",
       privacyNote:
         "We keep the room private. Everything at the table is off the record, and the guest list stays between the people in it.",
     },
@@ -164,7 +164,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       bestFit:
         "VP Sales, CRO, founding AE, enterprise sales leader, RevOps or GTM leader, founder-led sales operator, or experienced enterprise AI AE.",
       otherRoles:
-        "Founders bring the GTM questions they are working. Sponsors cover the room and stay out of the way.",
+        "Founders bring the GTM questions they are working. Sponsors cover the room and take a few minutes at the top.",
       privacyNote:
         "We keep the room private. Everything at the table is off the record, and the guest list stays between the people in it.",
     },
@@ -200,10 +200,10 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
     key: "sponsor",
     title: "Cover the room. Earn the trust.",
     points: [
-      "A seat near the founders and operators in the room.",
-      "Time with the deal before it becomes a vendor list.",
-      "The dinners and the golf to host.",
-      "Time to earn the trust of the people who sign.",
+      "A seat at the table with the founders and operators in the room.",
+      "Three to five minutes at the top of dinner to introduce yourself.",
+      "The dinner and the golf to host. One sponsor per dinner.",
+      "An evening to build relationships with the people who sign.",
     ],
     ctaLabel: "Start a conversation",
     accent: "magenta",
@@ -218,8 +218,12 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       ],
       pointsHeading: "Why sponsors come",
       terminal: "Cover the room. Sit in it. Earn the next conversation.",
+      bestFit:
+        "Sales tech, dev tools with an enterprise GTM motion, VC platform teams, recruiting firms, and GTM advisory firms.",
       otherRoles:
         "Founders bring the GTM questions they are working. Operators bring the plays that answered theirs.",
+      privacyNote:
+        "The guest list stays private. Introductions come out of conversations at the table, and the room is what carries them afterward.",
     },
     meta: {
       title: "Sponsorship | The GTM Table",

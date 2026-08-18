@@ -79,7 +79,7 @@ const eventFormats = [
   },
   {
     title: "Sponsor-hosted tables",
-    body: "A room a sponsor covers. They host, and they listen.",
+    body: "A room a sponsor covers. They introduce themselves, then they listen.",
     accent: "text-magenta",
     spine: "bg-magenta",
   },

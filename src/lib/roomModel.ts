@@ -24,7 +24,7 @@ export const roomModel: {
   {
     key: "sponsor",
     label: "SPONSORS COVER THE ROOM",
-    body: "They take care of the dinner and the golf. They host, and they listen.",
+    body: "They take care of the dinner and the golf. They get a few minutes at the top, then they listen.",
     accent: "magenta",
   },
 ];
