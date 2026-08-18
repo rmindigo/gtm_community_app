@@ -13,10 +13,16 @@ const inputClass =
 
 function FieldInput({ field }: { field: Field }) {
   const id = `f-${field.name}`;
+  // Derived from `required` rather than written into each label, so the two can
+  // never disagree.
   const label = (
     <span className={labelClass}>
       {field.label.toUpperCase()}
-      {field.required ? <span className="text-magenta"> *</span> : null}
+      {field.required ? (
+        <span className="text-magenta"> *</span>
+      ) : (
+        <span className="text-muted"> (OPTIONAL)</span>
+      )}
     </span>
   );
 
