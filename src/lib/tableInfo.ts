@@ -4,10 +4,11 @@
 // `date` is empty until a real date is set. The line omits whatever is empty
 // rather than inventing a placeholder, so nothing false ships by accident.
 // Set it to a display string when the date is real, e.g. "MARCH 12".
+// `seats` is a display string too, so it can hold a range.
 export const nextTable = {
-  date: "",
+  date: "FALL",
   city: "SAN FRANCISCO",
-  seats: 12,
+  seats: "8-12",
 };
 
 // Standing facts about how the series runs, as opposed to the next specific
