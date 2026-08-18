@@ -96,8 +96,8 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       { name: "email", label: "Work email", type: "email", required: true },
       { name: "company", label: "Company + website", type: "text", required: true },
       {
-        name: "problem",
-        label: "What GTM questions are on your desk right now?",
+        name: "topics",
+        label: "What topic(s) are you most interested in?",
         type: "textarea",
         required: true,
       },
