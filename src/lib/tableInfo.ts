@@ -14,7 +14,7 @@ export const nextTable = {
 // table. Kept on their own line so neither has to carry four facts at once.
 export const cadence = {
   frequency: "MONTHLY",
-  access: "INVITE ONLY",
+  access: "CURATED",
 };
 
 // "NEXT LEVEL: MARCH 12 · SAN FRANCISCO · 12 SEATS"
@@ -29,7 +29,7 @@ export function nextTableLine(): string {
   return `NEXT LEVEL: ${parts.join(" · ")}`;
 }
 
-// "MONTHLY · INVITE ONLY"
+// "MONTHLY · CURATED"
 export function cadenceLine(): string {
   return [cadence.frequency, cadence.access].filter(Boolean).join(" · ");
 }

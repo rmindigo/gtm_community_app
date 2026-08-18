@@ -4,6 +4,7 @@ import PixelStar from "./_components/PixelStar";
 import Hosts from "./_components/Hosts";
 import { nextTableLine, cadenceLine } from "@/lib/tableInfo";
 import { roomModel } from "@/lib/roomModel";
+import { PERSONAS } from "@/lib/personas";
 import { ACCENTS } from "@/lib/theme";
 
 const ctaLinks = {
@@ -55,18 +56,6 @@ const steps = [
     body: "A follow-up, an introduction, and the next table when it earns the time.",
     chip: "#ff5db1",
   },
-];
-
-const founderReasons = [
-  "Test the GTM call before it costs the quarter.",
-  "Hear from operators who carried the number and ran the team.",
-  "Talk through pipeline and outbound, the buyer, the price, the hire, the next segment.",
-];
-
-const operatorReasons = [
-  "Sit with operators who have done the work. Everyone at the table talks.",
-  "Meet founders working real enterprise problems.",
-  "Come to the dinners and the golf across the Bay Area.",
 ];
 
 const eventFormats = [
@@ -290,7 +279,7 @@ export default function Home() {
             Founders come for operators who know the difference between a good story and a deal that closes.
           </p>
           <div className="mb-6 grid gap-[10px] text-base leading-[1.4] text-body">
-            {founderReasons.map((reason) => (
+            {PERSONAS.founder.points.map((reason) => (
               <Bullet key={reason} color="#ffd23f">
                 {reason}
               </Bullet>
@@ -310,7 +299,7 @@ export default function Home() {
             Operators come for the peers, the dinners, the golf, and founders worth the time.
           </p>
           <div className="mb-6 grid gap-[10px] text-base leading-[1.4] text-body">
-            {operatorReasons.map((reason) => (
+            {PERSONAS.operator.points.map((reason) => (
               <Bullet key={reason} color="#52d8ff">
                 {reason}
               </Bullet>

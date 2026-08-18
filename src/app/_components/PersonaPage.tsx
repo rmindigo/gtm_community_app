@@ -71,6 +71,20 @@ export default function PersonaPage({ persona }: { persona: Persona }) {
               </div>
             ))}
           </div>
+
+          {persona.landing.bestFit ? (
+            <div className="mt-5 border-[3px] border-edge-dim bg-band p-4">
+              <div
+                className="font-pixel text-[9px] leading-[1.8] tracking-[2px]"
+                style={{ color }}
+              >
+                BEST FIT
+              </div>
+              <p className="mt-[6px] text-base leading-[1.4] text-body">
+                {persona.landing.bestFit}
+              </p>
+            </div>
+          ) : null}
         </div>
 
         {/* The room, with the reader's own row lit. Replaces a plain sentence
@@ -100,6 +114,12 @@ export default function PersonaPage({ persona }: { persona: Persona }) {
         <div className="mt-2 font-pixel text-[10px] leading-[1.8] tracking-[1px] text-muted">
           {cadenceLine()}
         </div>
+
+        {persona.landing.privacyNote ? (
+          <p className="mt-6 border-l-[3px] border-edge pl-4 text-[15px] leading-[1.6] text-muted">
+            {persona.landing.privacyNote}
+          </p>
+        ) : null}
 
         <div className="mt-6">
           <PersonaForm
