@@ -246,12 +246,6 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       { name: "company", label: "Company + website", type: "text", required: true },
       { name: "role", label: "Your role", type: "text" },
       {
-        name: "why",
-        label: "Why do you want to be in the room with these founders and operators?",
-        type: "textarea",
-        required: true,
-      },
-      {
         name: "host",
         label: "What would you want to host or fund?",
         type: "select",
