@@ -167,7 +167,7 @@ export default function Home() {
           </div>
 
           <h1 className="mt-6 font-pixel text-[clamp(22px,3.4vw,40px)] leading-[1.35] text-white [text-shadow:4px_4px_0_#2b2b5e]">
-            Founders and operators. One table. Straight talk on enterprise deals.
+            Founders and operators. One table. Straight talk on enterprise GTM.
             <Cursor color="#ffd23f" />
           </h1>
 
