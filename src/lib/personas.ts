@@ -165,6 +165,8 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
         "VP Sales, CRO, founding AE, enterprise sales leader, RevOps or GTM leader, founder-led sales operator, or experienced enterprise AI AE.",
       otherRoles:
         "Founders bring the GTM questions they are working. Sponsors cover the room and stay out of the way.",
+      privacyNote:
+        "We keep the room private. Everything at the table is off the record, and the guest list stays between the people in it.",
     },
     meta: {
       title: "For GTM operators | The GTM Table",
