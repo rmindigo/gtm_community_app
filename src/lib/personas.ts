@@ -165,7 +165,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
     segmentEnv: "RESEND_SEGMENT_OPERATOR",
     fields: [
       { name: "name", label: "Name", type: "text", required: true },
-      { name: "email", label: "Work email", type: "email", required: true },
+      { name: "email", label: "Email", type: "email", required: true },
       // Job title + company rather than a LinkedIn URL: pasting a profile link
       // on a phone is real friction, and these two answer the same question.
       // Both reuse properties already declared in Resend.
