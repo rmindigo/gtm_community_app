@@ -171,34 +171,6 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       // Both reuse properties already declared in Resend.
       { name: "role", label: "Job title", type: "text", required: true },
       { name: "company", label: "Company", type: "text", required: true },
-      {
-        name: "work",
-        label: "Which best describes your work?",
-        type: "select",
-        options: [
-          "AE / Sales",
-          "CRO or VP Sales",
-          "RevOps",
-          "Partnerships",
-          "Customer Success",
-          "Marketing",
-          "Sales Engineering",
-          "Other",
-        ],
-      },
-      {
-        name: "track",
-        label: "Have you carried a number or owned a GTM function?",
-        type: "select",
-        options: ["Quota-carrying", "Led a function", "Both", "Advisory only"],
-      },
-      {
-        name: "motion",
-        label: "What enterprise motion do you know cold?",
-        type: "textarea",
-        required: true,
-      },
-      { name: "bayArea", label: "Bay Area based?", type: "select", options: bayAreaOptions },
     ],
     email: {
       subject: "You're on the list — The GTM Table",
