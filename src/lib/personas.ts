@@ -144,9 +144,10 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
     key: "operator",
     title: "Sit at the table. Say what worked.",
     points: [
-      "Sit with operators who have done the work. Everyone at the table talks.",
-      "Meet founders working real enterprise problems.",
-      "Come to the dinners and the golf across the Bay Area.",
+      "A curated peer group of operators who have carried the number.",
+      "Founder dealflow and advisory openings, where the fit is real.",
+      "Dinners and golf across the Bay Area, covered by a sponsor.",
+      "Small rooms, high signal. Everyone at the table talks.",
     ],
     ctaLabel: "Join the network",
     accent: "cyan",
@@ -156,8 +157,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       heroTitle: "The room runs on operators.",
       pitch: [
         "You carried the number. You ran the team. Trade notes with operators who did the same, and meet founders working the problems you have already solved.",
-        "Operators come for the peers, the dinners, the golf, and founders worth the time. You say what worked in the field — the account you expanded, the one you lost, the motion you would run again.",
-        "Dinners and golf across the Bay Area. Small rooms, and everyone at the table talks.",
+        "You say what worked in the field — the account you expanded, the one you lost, the motion you would run again. The questions come from people who have worked the same ground, so the answers go somewhere.",
       ],
       pointsHeading: "Why operators come",
       terminal: "You carried the number. Say what worked, and hear what did not.",
