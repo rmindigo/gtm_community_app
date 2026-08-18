@@ -166,7 +166,11 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
     fields: [
       { name: "name", label: "Name", type: "text", required: true },
       { name: "email", label: "Work email", type: "email", required: true },
-      { name: "linkedin", label: "LinkedIn URL", type: "text", required: true },
+      // Job title + company rather than a LinkedIn URL: pasting a profile link
+      // on a phone is real friction, and these two answer the same question.
+      // Both reuse properties already declared in Resend.
+      { name: "role", label: "Job title", type: "text", required: true },
+      { name: "company", label: "Company", type: "text", required: true },
       {
         name: "work",
         label: "Which best describes your work?",
