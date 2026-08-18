@@ -172,7 +172,7 @@ export default function Home() {
           </h1>
 
           <p className="prose-mono mt-6 text-body">
-            The GTM Table is a dinner. Restaurants around San Francisco and the Bay Area. Founders bring the GTM questions they are working. Operators bring the plays that answered theirs. Everybody talks.
+            The GTM Table is a dinner. Founders bring their GTM questions. Operators bring the plays that answered theirs. Everybody talks.
           </p>
 
           <div className="mb-[14px] mt-7 flex items-center gap-2 font-pixel text-[10px] tracking-[1px] text-gold">
