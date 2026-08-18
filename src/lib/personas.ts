@@ -161,6 +161,8 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       ],
       pointsHeading: "Why operators come",
       terminal: "You carried the number. Say what worked, and hear what did not.",
+      bestFit:
+        "VP Sales, CRO, founding AE, enterprise sales leader, RevOps or GTM leader, founder-led sales operator, or experienced enterprise AI AE.",
       otherRoles:
         "Founders bring the GTM questions they are working. Sponsors cover the room and stay out of the way.",
     },
