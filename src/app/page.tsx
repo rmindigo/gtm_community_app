@@ -383,7 +383,7 @@ export default function Home() {
         <Hosts />
 
         <div className="mt-6 flex items-center border-[3px] border-edge-dim bg-band p-7 shadow-[8px_8px_0_#000]">
-          <p className="font-pixel text-[clamp(12px,1.6vw,15px)] leading-[2] text-green">
+          <p className="font-mono text-[clamp(15px,2vw,19px)] leading-[1.85] text-green">
             &gt; The promise is the room. The right people. One hard question. Enough trust to say what is actually going on in the deal.
             <Cursor color="#46f797" />
           </p>

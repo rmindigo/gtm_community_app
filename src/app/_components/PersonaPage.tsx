@@ -110,7 +110,7 @@ export default function PersonaPage({ persona }: { persona: Persona }) {
         <Hosts className="mt-[52px]" />
 
         <div className="mt-[52px] flex items-center border-[3px] border-edge-dim bg-band p-7 shadow-[8px_8px_0_#000]">
-          <p className="font-pixel text-[clamp(11px,1.5vw,14px)] leading-[2] text-green">
+          <p className="font-mono text-[clamp(14px,1.9vw,18px)] leading-[1.85] text-green">
             &gt; {persona.landing.terminal}
             <span
               data-blink
