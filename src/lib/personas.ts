@@ -82,13 +82,14 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
         "You are selling into the enterprise. Outbound is not landing, the pipe is thin, the logo will not sign, the hire is not made. Sit down with operators who have worked the same ground.",
         "Founders come for operators who know the difference between a good story and a motion that works. Bring a few GTM questions you are actually stuck on — pipeline, outbound, pricing, the buyer, the hire — and the table works them with you.",
         "Each table holds a few founders and a few operators. The questions stay narrow enough to answer over dinner.",
+        "You host the table. The founders at it cover the dinner, and the operators sit as their guests \u2014 which is what keeps the room worth an operator\u2019s evening.",
       ],
       pointsHeading: "What you leave with",
       terminal: "Bring the questions you are actually stuck on. The table works them with you.",
       bestFit:
         "B2B founders selling $25k+ ACV into mid-market or enterprise accounts.",
       otherRoles:
-        "Operators at the table have carried the number. Sponsors cover the room and take a few minutes at the top.",
+        "Operators at the table have carried the number, and come as guests of the founders hosting. Some tables carry a sponsor, who covers that room and takes a few minutes at the top.",
       privacyNote:
         "We keep the room private. Everything at the table is off the record, and the guest list stays between the people in it.",
     },
@@ -135,6 +136,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       heading: "You asked for a seat.",
       body: [
         "We read every one. If the table fits the questions you are working, you hear from us.",
+        "Founders at the table cover the dinner. You hear what that runs to before you take a seat.",
         "Bring the questions. Operators bring the plays.",
       ],
     },
@@ -146,7 +148,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
     points: [
       "A curated peer group of operators who have carried the number.",
       "Founder dealflow and advisory openings, where the fit is real.",
-      "Dinners and golf across the Bay Area, covered by a sponsor.",
+      "Dinners and golf across the Bay Area, covered by the founders hosting.",
       "Small rooms, high signal. Everyone at the table talks.",
     ],
     ctaLabel: "Join the network",
@@ -164,7 +166,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       bestFit:
         "VP Sales, CRO, founding AE, enterprise sales leader, RevOps or GTM leader, founder-led sales operator, or experienced enterprise AI AE.",
       otherRoles:
-        "Founders bring the GTM questions they are working. Sponsors cover the room and take a few minutes at the top.",
+        "Founders bring the GTM questions they are working, and cover the dinner you sit down to. Some tables carry a sponsor, who covers that room and takes a few minutes at the top.",
       privacyNote:
         "We keep the room private. Everything at the table is off the record, and the guest list stays between the people in it.",
     },
@@ -212,7 +214,8 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
     landing: {
       heroTitle: "Cover the room where the deals get talked about.",
       pitch: [
-        "Sponsors cover the dinners, the golf, and the rooms that bring founders and operators together. They get proximity and trust.",
+        "A sponsor takes on a room of their own — a dinner, a golf outing, an evening that brings founders and operators together. They get proximity and trust.",
+        "Founder tables run on the founders at them, so a sponsored room is its own event. You take one on and it is yours to host.",
         "One sponsor per dinner. You cover the room and you sit in it. The founders and operators at the table decide whether you earned the next conversation.",
         "A sponsor has to fit the people at the table. The room stays small, and operators run it.",
       ],
@@ -221,7 +224,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       bestFit:
         "Sales tech, dev tools with an enterprise GTM motion, VC platform teams, recruiting firms, and GTM advisory firms.",
       otherRoles:
-        "Founders bring the GTM questions they are working. Operators bring the plays that answered theirs.",
+        "Founders bring the GTM questions they are working, and cover their own table. Operators bring the plays that answered theirs.",
       privacyNote:
         "The guest list stays private. Introductions come out of conversations at the table, and the room is what carries them afterward.",
     },

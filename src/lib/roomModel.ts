@@ -11,20 +11,20 @@ export const roomModel: {
 }[] = [
   {
     key: "founder",
-    label: "FOUNDERS RESERVE THE SEAT",
-    body: "They bring the questions they are working. Pipeline that will not build, the stalled deal, the pricing call, the hire they have not made.",
+    label: "FOUNDERS HOST THE TABLE",
+    body: "They bring the questions they are working, and they cover the dinner. Pipeline that will not build, the stalled deal, the pricing call, the hire they have not made.",
     accent: "gold",
   },
   {
     key: "operator",
     label: "OPERATORS BRING THE PLAYS",
-    body: "They have built the pipe, sold into the account, expanded it, lost it, and won the next one. They say what worked.",
+    body: "They have built the pipe, sold into the account, expanded it, lost it, and won the next one. They say what worked, as guests of the table.",
     accent: "cyan",
   },
   {
     key: "sponsor",
-    label: "SPONSORS COVER THE ROOM",
-    body: "They take care of the dinner and the golf. They get a few minutes at the top, then they listen.",
+    label: "SPONSORS HOST A ROOM",
+    body: "Some tables carry one. They take care of that dinner or that golf outing, get a few minutes at the top, then they listen.",
     accent: "magenta",
   },
 ];

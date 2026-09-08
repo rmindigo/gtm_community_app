@@ -17,7 +17,7 @@ const players = [
   {
     tag: "FOUNDER →",
     href: ctaLinks.founder,
-    note: "Sit with operators who have already answered the questions you are working.",
+    note: "Sit with operators who have already answered the questions you are working. Founders cover the dinner.",
     accent: "#ffd23f",
     solid: true,
   },
@@ -30,7 +30,7 @@ const players = [
   {
     tag: "SPONSOR →",
     href: ctaLinks.sponsor,
-    note: "Cover the table. The dinners, the golf, the rooms.",
+    note: "Host a room of your own. A dinner, a golf outing, an evening with the people who sign.",
     accent: "#ff5db1",
   },
 ];
@@ -61,7 +61,7 @@ const steps = [
 const eventFormats = [
   {
     title: "Founder advisory dinners",
-    body: "A few founders. A few operators. A few questions to work. Dinner on the table.",
+    body: "A few founders. A few operators. A few questions to work. The founders at the table cover dinner.",
     accent: "text-gold",
     spine: "bg-gold",
   },
@@ -79,7 +79,7 @@ const eventFormats = [
   },
   {
     title: "Sponsor-hosted tables",
-    body: "A room a sponsor covers. They introduce themselves, then they listen.",
+    body: "Some tables carry a sponsor. They cover that room, introduce themselves, then they listen.",
     accent: "text-magenta",
     spine: "bg-magenta",
   },
@@ -88,7 +88,7 @@ const eventFormats = [
 const sponsorValue = [
   "A seat near the founders and operators in the room",
   "Time with the deal before it becomes a vendor list",
-  "The dinners and the golf to host",
+  "A dinner or a golf outing of your own to host",
   "Time to earn the trust of the people who sign",
 ];
 
@@ -172,7 +172,7 @@ export default function Home() {
           </h1>
 
           <p className="prose-mono mt-6 text-body">
-            The GTM Table is a dinner. Founders bring their GTM questions. Operators bring the plays that answered theirs. Everybody talks.
+            The GTM Table is a dinner. Founders bring their GTM questions and cover the table. Operators bring the plays that answered theirs. Everybody talks.
           </p>
 
           <div className="mb-[14px] mt-7 flex items-center gap-2 font-pixel text-[10px] tracking-[1px] text-gold">
@@ -319,7 +319,7 @@ export default function Home() {
               Trust gets built over dinner, not on a stage.
             </h2>
             <p className="text-[17px] leading-[1.45] text-muted">
-              The GTM Table starts in the Bay Area. Small rooms. Dinners, salons, operator tables, golf. A sponsor covers the check.
+              The GTM Table starts in the Bay Area. Small rooms. Dinners, salons, operator tables, golf. The founders at the table cover the check.
             </p>
           </div>
           <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4">
@@ -353,7 +353,7 @@ export default function Home() {
             Cover the room where the deals get talked about.
           </h2>
           <p className="prose-mono text-muted">
-            Sponsors cover the dinners, the golf, and the rooms that bring founders and operators together. They get proximity and trust.
+            Founders cover their own table. A sponsor takes on a room of their own — a dinner, a golf outing, an evening that brings founders and operators together — and gets proximity and trust out of it.
           </p>
         </div>
         <div className="border-[3px] border-magenta bg-panel p-7 shadow-[8px_8px_0_#000]">
