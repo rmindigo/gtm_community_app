@@ -1,5 +1,6 @@
 import Footer from "./_components/Footer";
 import PixelLogo from "./_components/PixelLogo";
+import Wordmark from "./_components/Wordmark";
 import PixelStar from "./_components/PixelStar";
 import Hosts from "./_components/Hosts";
 import { nextTableLine, cadenceLine } from "@/lib/tableInfo";
@@ -147,7 +148,7 @@ export default function Home() {
       <header className="mx-auto flex max-w-[1140px] flex-wrap items-center justify-between gap-4 px-6 py-[22px]">
         <div className="flex items-center gap-[14px]">
           <PixelLogo />
-          <div className="font-pixel text-xs tracking-[2px] text-white">THE GTM TABLE</div>
+          <div className="font-pixel text-[18px] tracking-[2px] text-white"><Wordmark /></div>
         </div>
         {/* Anchor links to sections the reader scrolls past anyway. On a phone the
             row wraps to two lines and pushes the seat picker below the fold, so it
@@ -167,12 +168,12 @@ export default function Home() {
           </div>
 
           <h1 className="mt-6 font-pixel text-[clamp(22px,3.4vw,40px)] leading-[1.35] text-white [text-shadow:4px_4px_0_#2b2b5e]">
-            Founders and operators. One table. Straight talk on enterprise GTM.
+            Founders and operators talking shop on enterprise GTM.
             <Cursor color="#ffd23f" />
           </h1>
 
           <p className="prose-mono mt-6 text-body">
-            The GTM Table is a dinner. Founders bring their GTM questions and cover the table. Operators bring the plays that answered theirs. Everybody talks.
+            GTMers is a dinner. Founders bring their GTM questions and cover the table. Operators bring the plays that answered theirs. Everybody talks.
           </p>
 
           <div className="mb-[14px] mt-7 flex items-center gap-2 font-pixel text-[10px] tracking-[1px] text-gold">
@@ -275,9 +276,6 @@ export default function Home() {
           <h2 className="mb-3 mt-4 font-pixel text-[clamp(14px,1.8vw,19px)] leading-[1.7] text-white">
             Get the operator&apos;s read before the mistake compounds.
           </h2>
-          <p className="mb-4 text-[17px] leading-[1.45] text-body">
-            Founders come for operators who know the difference between a good story and a deal that closes.
-          </p>
           <div className="mb-6 grid gap-[10px] text-base leading-[1.4] text-body">
             {PERSONAS.founder.points.map((reason) => (
               <Bullet key={reason} color="#ffd23f">
@@ -316,10 +314,10 @@ export default function Home() {
           <div>
             <Eyebrow className="text-green">BAY AREA FIRST — STAGE SELECT</Eyebrow>
             <h2 className="mb-3 mt-[18px] font-pixel text-[clamp(16px,2.2vw,24px)] leading-[1.7] text-white">
-              Trust gets built over dinner, not on a stage.
+              Small dinners across the Bay Area.
             </h2>
             <p className="text-[17px] leading-[1.45] text-muted">
-              The GTM Table starts in the Bay Area. Small rooms. Dinners, salons, operator tables, golf. The founders at the table cover the check.
+              GTMers starts in the Bay Area. Small rooms. Dinners, salons, operator tables, golf. The founders at the table cover the check.
             </p>
           </div>
           <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4">

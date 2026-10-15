@@ -4,11 +4,11 @@
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 <!-- END:nextjs-agent-rules -->
 
-# The GTM Table Agent Guide
+# GTMers Agent Guide
 
 ## Project
 
-The GTM Table is a curated Bay Area dinner series pairing enterprise-GTM
+GTMers is a curated Bay Area dinner series pairing enterprise-GTM
 founders with operators who have run the play, funded by sponsors. The site is
 live at `gtmers.co`.
 

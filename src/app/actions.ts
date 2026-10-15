@@ -45,10 +45,10 @@ function renderEmail(heading: string, body: string[]): string {
         <table role="presentation" width="520" cellpadding="0" cellspacing="0" border="0" style="max-width:520px;width:100%;background-color:${MAIL.panel};border:3px solid ${MAIL.edge};">
           <tr>
             <td style="padding:32px;">
-              <p style="margin:0 0 22px;font-family:${MONO};font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:${MAIL.gold};">The GTM Table</p>
+              <p style="margin:0 0 22px;font-family:${MONO};font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:${MAIL.gold};">GTMers</p>
               <h1 style="margin:0 0 20px;font-family:${MONO};font-size:20px;line-height:1.5;font-weight:700;color:${MAIL.white};">${heading}</h1>
               ${paragraphs}
-              <p style="margin:28px 0 0;font-family:${MONO};font-size:13px;line-height:1.6;color:${MAIL.muted};">The GTM Table — Bay Area enterprise GTM.</p>
+              <p style="margin:28px 0 0;font-family:${MONO};font-size:13px;line-height:1.6;color:${MAIL.muted};">GTMers — Bay Area enterprise GTM.</p>
             </td>
           </tr>
         </table>

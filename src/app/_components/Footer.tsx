@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Wordmark from "./Wordmark";
 import { SHOW_SPONSORS } from "@/lib/personas";
 
 // `prefix` lets the persona pages point the anchors back at the homepage.
@@ -7,7 +8,7 @@ export default function Footer({
   prefix = "",
   width = "max-w-[1140px]",
   // Home carries the long sign-off; the form pages keep it short.
-  tagline = "The GTM Table. Bay Area. © 2026",
+  tagline = "GTMers. Bay Area. © 2026",
 }: {
   prefix?: string;
   width?: string;
@@ -30,7 +31,7 @@ export default function Footer({
             href="/"
             className="font-pixel text-[11px] tracking-[2px] text-white hover:text-gold"
           >
-            THE GTM TABLE
+            <Wordmark />
           </Link>
           <div className="mt-2 text-[15px] text-muted">{tagline}</div>
         </div>

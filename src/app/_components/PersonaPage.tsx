@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Footer from "./Footer";
 import PixelLogo from "./PixelLogo";
+import Wordmark from "./Wordmark";
 import Hosts from "./Hosts";
 import PersonaForm from "./PersonaForm";
 import RoomModelStrip from "./RoomModelStrip";
@@ -18,7 +19,7 @@ export default function PersonaPage({ persona }: { persona: Persona }) {
       <header className="mx-auto flex max-w-[820px] items-center justify-between gap-4 px-6 py-[22px]">
         <Link href="/" className="flex items-center gap-[14px] text-white hover:text-gold">
           <PixelLogo />
-          <span className="font-pixel text-xs tracking-[2px]">THE GTM TABLE</span>
+          <span className="font-pixel text-[18px] tracking-[2px]"><Wordmark /></span>
         </Link>
         <Link href="/" className="text-base">
           ← Back
@@ -144,7 +145,7 @@ export default function PersonaPage({ persona }: { persona: Persona }) {
         </div>
       </main>
 
-      <Footer prefix="/" width="max-w-[820px]" tagline="The GTM Table. Bay Area." />
+      <Footer prefix="/" width="max-w-[820px]" tagline="GTMers. Bay Area." />
     </div>
   );
 }

@@ -76,7 +76,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       "A sharper outbound motion.",
       "Feedback on the account strategy you are running.",
       "A pricing sanity check from people who have set it.",
-      "Operator introductions, if the room earns them.",
+      "Operator introductions.",
     ],
     ctaLabel: "Join the list",
     accent: "gold",
@@ -101,7 +101,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
         "We keep the room private. Everything at the table is off the record, and the guest list stays between the people in it.",
     },
     meta: {
-      title: "For founders | The GTM Table",
+      title: "For founders | GTMers",
       description:
         "Bring a few GTM questions — pipeline, outbound, pricing, the buyer, the hire — to a Bay Area dinner with operators who have already answered them.",
       ogTitle: "Get the operator's read before the mistake compounds.",
@@ -127,7 +127,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       },
     ],
     email: {
-      subject: "You're on the list — The GTM Table",
+      subject: "You're on the list — GTMers",
       heading: "You're on the list.",
       body: [
         "When the next founder table is set, you hear from us with the date and the room. Request a seat from there.",
@@ -141,10 +141,9 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
     key: "operator",
     title: "Sit at the table. Say what worked.",
     points: [
-      "A curated peer group of operators who have carried the number.",
+      "A curated peer group of operators.",
       "Founder dealflow and advisory openings, where the fit is real.",
       "Dinners and golf across the Bay Area, covered by the founders hosting.",
-      "Small rooms, high signal. Everyone at the table talks.",
     ],
     ctaLabel: "Join the network",
     accent: "cyan",
@@ -167,7 +166,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
         "We keep the room private. Everything at the table is off the record, and the guest list stays between the people in it.",
     },
     meta: {
-      title: "For GTM operators | The GTM Table",
+      title: "For GTM operators | GTMers",
       description:
         "Trade notes with operators who have carried the number, and meet founders working the enterprise problems you have already solved. Bay Area dinners and golf.",
       ogTitle: "The room runs on operators.",
@@ -185,7 +184,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       { name: "company", label: "Company", type: "text", required: true },
     ],
     email: {
-      subject: "You're on the list — The GTM Table",
+      subject: "You're on the list — GTMers",
       heading: "You carried the number.",
       body: [
         "We want you at the table. When a room fits your ground, we reach out.",
@@ -225,7 +224,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
         "The guest list stays private. Introductions come out of conversations at the table, and the room is what carries them afterward.",
     },
     meta: {
-      title: "Sponsorship | The GTM Table",
+      title: "Sponsorship | GTMers",
       description:
         "One sponsor per dinner. Cover the room where Bay Area founders and enterprise GTM operators talk, and sit at the table with them.",
       ogTitle: "Cover the room where the deals get talked about.",
@@ -259,7 +258,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       { name: "bayArea", label: "Bay Area presence?", type: "select", options: ["Yes", "Some", "No"] },
     ],
     email: {
-      subject: "Thanks — The GTM Table",
+      subject: "Thanks — GTMers",
       heading: "You want to cover the room.",
       body: [
         "We read your note. If there is a fit, we start a conversation.",

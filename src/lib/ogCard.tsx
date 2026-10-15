@@ -84,7 +84,9 @@ export async function ogCard({
         >
           <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
             <PixelMark unit={22} />
-            <div style={{ fontSize: 22, color: "#fff", letterSpacing: 4 }}>THE GTM TABLE</div>
+            <div style={{ display: "flex", alignItems: "baseline", fontSize: 22, color: "#fff", letterSpacing: 4 }}>
+              GTM<span style={{ fontSize: 18 }}>ERS</span>
+            </div>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column" }}>

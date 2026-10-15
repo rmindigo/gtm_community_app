@@ -20,12 +20,12 @@ const DESCRIPTION =
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gtmers.co"),
-  title: "The GTM Table | Enterprise GTM dinners",
+  title: "GTMers | Enterprise GTM dinners",
   description: DESCRIPTION,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    siteName: "The GTM Table",
+    siteName: "GTMers",
     url: "/",
     title: "Founders and operators. One table.",
     description: DESCRIPTION,

@@ -15,7 +15,7 @@ export function personaMetadata(persona: Persona): Metadata {
     alternates: { canonical: url },
     openGraph: {
       type: "website",
-      siteName: "The GTM Table",
+      siteName: "GTMers",
       url,
       title: ogTitle,
       description: ogDescription,

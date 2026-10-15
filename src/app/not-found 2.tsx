@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Footer from "./_components/Footer";
 import PixelLogo from "./_components/PixelLogo";
+import Wordmark from "./_components/Wordmark";
 
 export const metadata = {
-  title: "Level not found | The GTM Table",
+  title: "Level not found | GTMers",
 };
 
 // The one place coin-op language belongs: nothing is being bought here, and
@@ -15,7 +16,7 @@ export default function NotFound() {
       <header className="mx-auto flex max-w-[820px] items-center justify-between gap-4 px-6 py-[22px]">
         <Link href="/" className="flex items-center gap-[14px] text-white hover:text-gold">
           <PixelLogo />
-          <span className="font-pixel text-xs tracking-[2px]">THE GTM TABLE</span>
+          <span className="font-pixel text-[18px] tracking-[2px]"><Wordmark /></span>
         </Link>
       </header>
 
@@ -60,7 +61,7 @@ export default function NotFound() {
         </div>
       </main>
 
-      <Footer prefix="/" width="max-w-[820px]" tagline="The GTM Table. Bay Area." />
+      <Footer prefix="/" width="max-w-[820px]" tagline="GTMers. Bay Area." />
     </div>
   );
 }
