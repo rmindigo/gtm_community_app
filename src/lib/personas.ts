@@ -234,7 +234,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
     segmentEnv: "RESEND_SEGMENT_SPONSOR",
     fields: [
       { name: "name", label: "Name", type: "text", required: true },
-      { name: "email", label: "Work email", type: "email", required: true },
+      { name: "email", label: "Email", type: "email", required: true },
       { name: "company", label: "Company + website", type: "text", required: true },
       { name: "role", label: "Your role", type: "text" },
       {
