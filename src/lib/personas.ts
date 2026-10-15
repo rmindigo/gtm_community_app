@@ -18,6 +18,14 @@ export type Field = {
 
 export type PersonaKey = "founder" | "operator" | "sponsor";
 
+// Sponsors are parked for now: founders cover the dinner. Flip this to bring
+// back the sponsor page, form, homepage section and every mention of them.
+export const SHOW_SPONSORS = false;
+
+const sponsorRoomLine = SHOW_SPONSORS
+  ? " Some tables carry a sponsor, who covers that room and takes a few minutes at the top."
+  : "";
+
 export type Persona = {
   key: PersonaKey;
   title: string;
@@ -60,8 +68,6 @@ export type Persona = {
   email: { subject: string; heading: string; body: string[] };
 };
 
-const bayAreaOptions = ["Yes, SF / Bay Area", "Sometimes", "No"];
-
 export const PERSONAS: Record<PersonaKey, Persona> = {
   founder: {
     key: "founder",
@@ -72,7 +78,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       "A pricing sanity check from people who have set it.",
       "Operator introductions, if the room earns them.",
     ],
-    ctaLabel: "Request a seat",
+    ctaLabel: "Join the list",
     accent: "gold",
     badge: "FOR FOUNDERS",
     formHeader: "BRING YOUR QUESTIONS",
@@ -81,7 +87,7 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       pitch: [
         "You are selling into the enterprise. Outbound is not landing, the pipe is thin, the logo will not sign, the hire is not made. Sit down with operators who have worked the same ground.",
         "Founders come for operators who know the difference between a good story and a motion that works. Bring a few GTM questions you are actually stuck on — pipeline, outbound, pricing, the buyer, the hire — and the table works them with you.",
-        "Each table holds a few founders and a few operators. The questions stay narrow enough to answer over dinner.",
+        "Each table holds a few founders and a few operators. The floor is open: ask anything on GTM and sales.",
         "You host the table. The founders at it cover the dinner, and the operators sit as their guests \u2014 which is what keeps the room worth an operator\u2019s evening.",
       ],
       pointsHeading: "What you leave with",
@@ -89,7 +95,8 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       bestFit:
         "B2B founders selling $25k+ ACV into mid-market or enterprise accounts.",
       otherRoles:
-        "Operators at the table have carried the number, and come as guests of the founders hosting. Some tables carry a sponsor, who covers that room and takes a few minutes at the top.",
+        "Operators at the table have carried the number, and come as guests of the founders hosting." +
+        sponsorRoomLine,
       privacyNote:
         "We keep the room private. Everything at the table is off the record, and the guest list stays between the people in it.",
     },
@@ -104,38 +111,26 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
     segmentEnv: "RESEND_SEGMENT_FOUNDER",
     fields: [
       { name: "name", label: "Name", type: "text", required: true },
-      { name: "email", label: "Work email", type: "email", required: true },
-      { name: "company", label: "Company + website", type: "text", required: true },
+      { name: "email", label: "Email", type: "email", required: true },
+      { name: "company", label: "Website URL", type: "text", required: true },
+      {
+        name: "coverDinner",
+        label: "Are you open to covering the cost of dinner?",
+        type: "select",
+        required: true,
+        options: ["Yes", "Depends on the cost", "No"],
+      },
       {
         name: "topics",
         label: "What topic(s) are you most interested in?",
         type: "textarea",
-        required: true,
       },
-      {
-        name: "stage",
-        label: "Where are you in enterprise GTM?",
-        type: "select",
-        options: [
-          "Pre-first enterprise deal",
-          "Closing the first few",
-          "Repeatable motion",
-          "Scaling the team",
-        ],
-      },
-      {
-        name: "dealSize",
-        label: "Typical deal size",
-        type: "select",
-        options: ["<$25k", "$25–100k", "$100–250k", "$250k+"],
-      },
-      { name: "bayArea", label: "Can you make Bay Area dinners?", type: "select", options: bayAreaOptions },
     ],
     email: {
-      subject: "Your seat request — The GTM Table",
-      heading: "You asked for a seat.",
+      subject: "You're on the list — The GTM Table",
+      heading: "You're on the list.",
       body: [
-        "We read every one. If the table fits the questions you are working, you hear from us.",
+        "When the next founder table is set, you hear from us with the date and the room. Request a seat from there.",
         "Founders at the table cover the dinner. You hear what that runs to before you take a seat.",
         "Bring the questions. Operators bring the plays.",
       ],
@@ -166,7 +161,8 @@ export const PERSONAS: Record<PersonaKey, Persona> = {
       bestFit:
         "VP Sales, CRO, founding AE, enterprise sales leader, RevOps or GTM leader, founder-led sales operator, or experienced enterprise AI AE.",
       otherRoles:
-        "Founders bring the GTM questions they are working, and cover the dinner you sit down to. Some tables carry a sponsor, who covers that room and takes a few minutes at the top.",
+        "Founders bring the GTM questions they are working, and cover the dinner you sit down to." +
+        sponsorRoomLine,
       privacyNote:
         "We keep the room private. Everything at the table is off the record, and the guest list stays between the people in it.",
     },

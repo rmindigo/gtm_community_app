@@ -1,7 +1,7 @@
 "use server";
 
 import { Resend } from "resend";
-import { PERSONAS, type PersonaKey } from "@/lib/personas";
+import { PERSONAS, SHOW_SPONSORS, type PersonaKey } from "@/lib/personas";
 
 export type SubscribeState = {
   status: "idle" | "success" | "error";
@@ -11,7 +11,7 @@ export type SubscribeState = {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function isPersonaKey(value: unknown): value is PersonaKey {
-  return value === "founder" || value === "operator" || value === "sponsor";
+  return value === "founder" || value === "operator" || (SHOW_SPONSORS && value === "sponsor");
 }
 
 // Arcade palette, shared with globals.css.

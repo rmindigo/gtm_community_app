@@ -4,7 +4,7 @@ import PixelStar from "./_components/PixelStar";
 import Hosts from "./_components/Hosts";
 import { nextTableLine, cadenceLine } from "@/lib/tableInfo";
 import { roomModel } from "@/lib/roomModel";
-import { PERSONAS } from "@/lib/personas";
+import { PERSONAS, SHOW_SPONSORS } from "@/lib/personas";
 import { ACCENTS } from "@/lib/theme";
 
 const ctaLinks = {
@@ -33,7 +33,7 @@ const players = [
     note: "Host a room of your own. A dinner, a golf outing, an evening with the people who sign.",
     accent: "#ff5db1",
   },
-];
+].filter((player) => SHOW_SPONSORS || player.href !== ctaLinks.sponsor);
 
 const steps = [
   {
@@ -42,8 +42,8 @@ const steps = [
     chip: "#ffd23f",
   },
   {
-    title: "Set the question",
-    body: "The questions stay narrow. Build the outbound motion. Open the first enterprise account. Hire the first VP of Sales. Price the next tier.",
+    title: "Open the floor",
+    body: "Founders ask whatever they are working on. The outbound motion. The first enterprise account. The first VP of Sales. The next pricing tier.",
     chip: "#52d8ff",
   },
   {
@@ -83,7 +83,7 @@ const eventFormats = [
     accent: "text-magenta",
     spine: "bg-magenta",
   },
-];
+].filter((format) => SHOW_SPONSORS || format.title !== "Sponsor-hosted tables");
 
 const sponsorValue = [
   "A seat near the founders and operators in the room",
@@ -155,7 +155,7 @@ export default function Home() {
         <nav className="hidden flex-wrap gap-[22px] text-base sm:flex">
           <a href="#how">How it works</a>
           <a href="#formats">Formats</a>
-          <a href="#sponsors">Sponsors</a>
+          {SHOW_SPONSORS && <a href="#sponsors">Sponsors</a>}
           <a href="#hosts">Hosts</a>
         </nav>
       </header>
@@ -244,9 +244,9 @@ export default function Home() {
         <div>
           <Eyebrow className="text-green">HOW IT WORKS — QUEST LOG</Eyebrow>
           <h2 className="mb-3 mt-[18px] font-pixel text-[clamp(16px,2.2vw,24px)] leading-[1.7] text-white">
-            One room. One problem. The people who have solved it.
+            One room. Any GTM question. The people who have answered it.
           </h2>
-          <p className="text-[17px] text-muted">One page and four doors. Pick yours. The room comes after.</p>
+          <p className="text-[17px] text-muted">An open forum on GTM and sales. Founders ask anything. Operators say what worked.</p>
         </div>
         <div className="grid gap-4">
           {steps.map((step, index) => (
@@ -343,6 +343,7 @@ export default function Home() {
         </div>
       </section>
 
+      {SHOW_SPONSORS && (
       <section
         id="sponsors"
         className="mx-auto grid max-w-[1140px] grid-cols-[repeat(auto-fit,minmax(320px,1fr))] items-start gap-10 px-6 py-[72px]"
@@ -378,13 +379,14 @@ export default function Home() {
           </ArcadeButton>
         </div>
       </section>
+      )}
 
       <div className="mx-auto max-w-[1140px] px-6 pb-[72px]">
         <Hosts />
 
         <div className="mt-6 flex items-center border-[3px] border-edge-dim bg-band p-7 shadow-[8px_8px_0_#000]">
           <p className="font-mono text-[clamp(15px,2vw,19px)] leading-[1.85] text-green">
-            &gt; The promise is the room. The right people. One hard question. Enough trust to say what is actually going on in the deal.
+            &gt; The promise is the room. The right people. Any question on the table. Enough trust to say what is actually going on in the deal.
             <Cursor color="#46f797" />
           </p>
         </div>
@@ -403,7 +405,7 @@ export default function Home() {
             Take the seat that fits your role at the table.
           </h2>
           <p className="mb-8 text-[17px] text-muted">
-            Founder, operator, or sponsor. Tell us which seat is yours and we take it from there.
+            {SHOW_SPONSORS ? "Founder, operator, or sponsor." : "Founder or operator."} Tell us which seat is yours and we take it from there.
           </p>
           <div className="flex flex-wrap justify-center gap-[14px]">
             <ArcadeButton href={ctaLinks.founder} color="#ffd23f" solid>
@@ -412,9 +414,11 @@ export default function Home() {
             <ArcadeButton href={ctaLinks.operator} color="#52d8ff">
               I&apos;M A GTM OPERATOR
             </ArcadeButton>
-            <ArcadeButton href={ctaLinks.sponsor} color="#ff5db1">
-              SPONSORING
-            </ArcadeButton>
+            {SHOW_SPONSORS && (
+              <ArcadeButton href={ctaLinks.sponsor} color="#ff5db1">
+                SPONSORING
+              </ArcadeButton>
+            )}
           </div>
         </div>
       </section>

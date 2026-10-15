@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SHOW_SPONSORS } from "@/lib/personas";
 
 // `prefix` lets the persona pages point the anchors back at the homepage.
 // `width` matches the footer to the page's own content column.
@@ -15,7 +16,7 @@ export default function Footer({
   const links = [
     ["How it works", `${prefix}#how`],
     ["Formats", `${prefix}#formats`],
-    ["Sponsors", `${prefix}#sponsors`],
+    ...(SHOW_SPONSORS ? [["Sponsors", `${prefix}#sponsors`]] : []),
     ["Hosts", `${prefix}#hosts`],
   ];
 

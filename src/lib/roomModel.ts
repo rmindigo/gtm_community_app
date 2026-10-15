@@ -1,14 +1,16 @@
-import type { PersonaKey } from "./personas";
+import { SHOW_SPONSORS, type PersonaKey } from "./personas";
 import type { AccentName } from "./theme";
 
 // The three roles at the table. Used by the homepage Room Model panel and by
 // the strip on each persona page, so the wording stays identical in both.
-export const roomModel: {
+type Role = {
   key: PersonaKey;
   label: string;
   body: string;
   accent: AccentName;
-}[] = [
+};
+
+const roles: Role[] = [
   {
     key: "founder",
     label: "FOUNDERS HOST THE TABLE",
@@ -28,3 +30,5 @@ export const roomModel: {
     accent: "magenta",
   },
 ];
+
+export const roomModel = roles.filter((role) => SHOW_SPONSORS || role.key !== "sponsor");
