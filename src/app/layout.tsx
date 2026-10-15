@@ -16,7 +16,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 const DESCRIPTION =
-  "A dinner in the Bay Area. Founders bring their GTM questions. Operators bring the plays. Straight talk on enterprise GTM.";
+  "A dinner in the Bay Area. Founders bring their GTM questions, operators bring the plays, and everyone talks shop.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gtmers.co"),
@@ -27,12 +27,12 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "GTMers",
     url: "/",
-    title: "Founders and operators. One table.",
+    title: "Founders and operators talking shop on enterprise GTM.",
     description: DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Founders and operators. One table.",
+    title: "Founders and operators talking shop on enterprise GTM.",
     description: DESCRIPTION,
   },
 };

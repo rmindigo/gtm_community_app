@@ -6,7 +6,7 @@ export { size, contentType };
 export default function Image() {
   return ogCard({
     eyebrow: "BAY AREA FIRST — ENTERPRISE GTM",
-    title: "Founders and operators. One table.",
+    title: "Founders and operators talking shop on enterprise GTM.",
     footer: "GTMERS.CO",
     accent: ACCENT.GREEN,
   });

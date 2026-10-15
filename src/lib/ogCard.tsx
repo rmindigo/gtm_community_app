@@ -93,7 +93,8 @@ export async function ogCard({
             <div style={{ fontSize: 20, color: accent, letterSpacing: 4 }}>{eyebrow}</div>
             <div
               style={{
-                fontSize: 46,
+                // Step down for long titles so they hold to three lines.
+                fontSize: title.length > 52 ? 38 : 46,
                 color: "#fff",
                 lineHeight: 1.5,
                 marginTop: 28,
