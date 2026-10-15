@@ -164,13 +164,19 @@ export async function subscribe(
 
   try {
     // 2. Send the persona confirmation email to the subscriber.
-    await resend.emails.send({
+    // Resend reports a rejected send in `error` rather than throwing, so both
+    // sends are checked — otherwise a failure is silent and the form still
+    // shows success.
+    const confirmation = await resend.emails.send({
       from,
       to: email,
       ...(replyTo ? { replyTo } : {}),
       subject: persona.email.subject,
       html: renderEmail(persona.email.heading, persona.email.body),
     });
+    if (confirmation.error) {
+      console.error(`[subscribe] confirmation not sent for ${persona.key}:`, confirmation.error);
+    }
 
     // 3. Notify the operator with the full application (optional).
     if (notifyTo) {
@@ -185,7 +191,7 @@ export async function subscribe(
             </tr>`,
         )
         .join("");
-      await resend.emails.send({
+      const notification = await resend.emails.send({
         from,
         to: notifyTo,
         // Reply goes straight back to the applicant.
@@ -207,6 +213,11 @@ export async function subscribe(
           </tr>
         </table>`,
       });
+      if (notification.error) {
+        console.error(`[subscribe] notification not sent for ${persona.key}:`, notification.error);
+      }
+    } else {
+      console.warn("[subscribe] RESEND_NOTIFY_TO not set; no notification sent");
     }
   } catch (error) {
     console.error(`[subscribe] Resend error for ${persona.key}:`, error);
