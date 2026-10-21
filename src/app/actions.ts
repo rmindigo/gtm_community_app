@@ -105,11 +105,15 @@ export async function subscribe(
   if (rawSegmentId && !segmentId) {
     console.error(`[subscribe] ${persona.segmentEnv} is not a valid uuid; skipping segment`);
   }
-  const notifyTo = process.env.RESEND_NOTIFY_TO;
+  // Comma-separated, so every owner gets the notification.
+  const notifyTo = (process.env.RESEND_NOTIFY_TO ?? "")
+    .split(",")
+    .map((address) => address.trim())
+    .filter(Boolean);
   // RESEND_FROM only has to live on the verified domain — no mailbox needed.
   // Replies go here instead, so they reach a real inbox. Falls back to the
-  // notify address when unset.
-  const replyTo = process.env.RESEND_REPLY_TO || notifyTo;
+  // notify addresses when unset.
+  const replyTo = process.env.RESEND_REPLY_TO || (notifyTo.length ? notifyTo : undefined);
 
   // Not yet configured (no domain/keys). Don't fail the user — log and succeed
   // so the form is fully testable now. Wire keys later and it starts sending.
@@ -179,7 +183,7 @@ export async function subscribe(
     }
 
     // 3. Notify the operator with the full application (optional).
-    if (notifyTo) {
+    if (notifyTo.length) {
       const rows = Object.entries(answers)
         .map(
           ([label, value]) =>
